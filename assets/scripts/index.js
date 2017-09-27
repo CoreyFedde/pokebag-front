@@ -5,8 +5,8 @@ const config = require('./config')
 
 $(() => {
   setAPIOrigin(location, config)
-  $('#bodyText').on('click', api.onGetAllItems)
-  $('#bodyText').on('click', api.onGetAllPokemon)
+  $('#bodyText').on('click', api.onGetOneItem)
+  $('#bodyText').on('click', api.onGetOnePokemon)
 })
 
 // use require with a reference to bundle the file and use it in this file

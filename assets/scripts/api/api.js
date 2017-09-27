@@ -8,9 +8,22 @@ const getAllPokemon = function () {
     method: 'GET'
   })
 }
+const getOnePokemon = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/pokemon/' + 1,
+    method: 'GET'
+  })
+}
+
 const getAllItems = function () {
   return $.ajax({
     url: config.apiOrigin + '/item/',
+    method: 'GET'
+  })
+}
+const getOneItem = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/item/' + 1,
     method: 'GET'
   })
 }
@@ -25,7 +38,19 @@ const onGetAllItems = function (event) {
     .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
+const onGetOnePokemon = function (event) {
+  getOnePokemon()
+    .then((data) => console.log('data: ', data))
+    .catch((error) => console.log(error))
+}
+const onGetOneItem = function (event) {
+  getOneItem()
+    .then((data) => console.log('data: ', data))
+    .catch((error) => console.log(error))
+}
 module.exports = {
   onGetAllPokemon,
-  onGetAllItems
+  onGetAllItems,
+  onGetOnePokemon,
+  onGetOneItem
 }
