@@ -1,10 +1,11 @@
 'use strict'
-
+const api = require('./api/api.js')
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 
 $(() => {
   setAPIOrigin(location, config)
+  $('#bodyText').on('click', api.onGetAllPokemon)
 })
 
 // use require with a reference to bundle the file and use it in this file
