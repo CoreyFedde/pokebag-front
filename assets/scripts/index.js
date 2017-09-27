@@ -5,6 +5,7 @@ const config = require('./config')
 
 $(() => {
   setAPIOrigin(location, config)
+  $('#bodyText').on('click', api.onGetAllItems)
   $('#bodyText').on('click', api.onGetAllPokemon)
 })
 
