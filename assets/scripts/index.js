@@ -7,6 +7,10 @@ $(() => {
   setAPIOrigin(location, config)
   $('#bodyText').on('click', api.onGetOneItem)
   $('#bodyText').on('click', api.onGetOnePokemon)
+  $('#menu').hide()
+  $('#testButton').on('click', function () {
+    $('#menu').toggle()
+  })
 })
 
 // use require with a reference to bundle the file and use it in this file
