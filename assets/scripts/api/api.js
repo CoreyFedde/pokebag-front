@@ -1,6 +1,8 @@
 'use strict'
 // const store = require('../store.js')
 const config = require('../config.js')
+const pokemonTemplate = require('../templates/show-all-pokemon.handlebars')
+const itemTemplate = require('../templates/show-all-items.handlebars')
 
 const getAllPokemon = function () {
   return $.ajax({
@@ -30,12 +32,18 @@ const getOneItem = function () {
 
 const onGetAllPokemon = function (event) {
   getAllPokemon()
-    .then((data) => console.log('data: ', data))
+    .then((data) => {
+      const pokemonHTML = pokemonTemplate({ pokemons: data.results })
+      $('#pokemonBoard').prepend(pokemonHTML)
+    })
     .catch((error) => console.log(error))
 }
 const onGetAllItems = function (event) {
   getAllItems()
-    .then((data) => console.log('data: ', data))
+    .then((data) => {
+      const itemHTML = itemTemplate({ items: data.results })
+      $('#itemBoard').prepend(itemHTML)
+    })
     .catch((error) => console.log(error))
 }
 const onGetOnePokemon = function (event) {

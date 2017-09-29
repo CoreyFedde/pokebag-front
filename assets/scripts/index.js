@@ -5,8 +5,8 @@ const config = require('./config')
 
 $(() => {
   setAPIOrigin(location, config)
-  $('#bodyText').on('click', api.onGetOneItem)
-  $('#bodyText').on('click', api.onGetOnePokemon)
+  $('#bodyText').on('click', api.onGetAllItems)
+  $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
   $('#storeView').hide()
   $('#pokemonView').hide()
@@ -30,6 +30,10 @@ $(() => {
     $('#storeView').hide()
   })
 })
+
+// On page load, we will need to randomly assign pokemon and items
+// Pokemon will be given random stats and level
+// Items will each be quantity of 1
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
