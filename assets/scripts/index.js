@@ -8,8 +8,26 @@ $(() => {
   $('#bodyText').on('click', api.onGetOneItem)
   $('#bodyText').on('click', api.onGetOnePokemon)
   $('#menu').hide()
+  $('#storeView').hide()
+  $('#pokemonView').hide()
+  $('#itemView').hide()
   $('#testButton').on('click', function () {
     $('#menu').toggle()
+  })
+  $('#storeShow').on('click', function () {
+    $('#storeView').toggle()
+    $('#pokemonView').hide()
+    $('#itemView').hide()
+  })
+  $('#pokemonShow').on('click', function () {
+    $('#pokemonView').toggle()
+    $('#storeView').hide()
+    $('#itemView').hide()
+  })
+  $('#itemShow').on('click', function () {
+    $('#itemView').toggle()
+    $('#pokemonView').hide()
+    $('#storeView').hide()
   })
 })
 
