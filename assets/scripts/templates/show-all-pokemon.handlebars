@@ -1,5 +1,6 @@
 {{#each pokemons as |pokemon|}}
-<div class="pokemon-card">
+<div id="{{pokemon.name}}Card" class="pokemon-card">
   <h1>{{pokemon.name}}</h1>
+  <h5 class="pokemon-selector" data-target='#{{pokemon.name}}Card'>Pick</h5>
 </div>
 {{/each}}

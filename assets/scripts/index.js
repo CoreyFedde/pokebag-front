@@ -29,6 +29,13 @@ $(() => {
     $('#pokemonView').hide()
     $('#storeView').hide()
   })
+  $('#pokemonBoard').on('click', '.pokemon-selector', function (event) {
+    const parent = $(event.target).parent('div')
+    parent.css('background-color', 'green')
+  })
+  // $('#pokemonSelector').on('click', function (event) {
+  //   $(event.target).css('border', 'green')
+  // })
 })
 
 // On page load, we will need to randomly assign pokemon and items
