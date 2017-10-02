@@ -16,6 +16,7 @@ $(() => {
   $('#testButton').on('click', function () {
     $('#menu').toggle()
   })
+  // Store options
   $('#storeShow').on('click', function () {
     $('#storeView').toggle()
     $('#pokemonView').hide()
@@ -32,12 +33,16 @@ $(() => {
     $('#itemBoard').show()
     $('#storeModal').modal('toggle')
   })
+
+  // Pokemon view options
   $('#pokemonShow').on('click', function () {
     $('#pokemonView').toggle()
     $('#storeView').hide()
     $('#itemView').hide()
     $('#menu').hide()
   })
+
+  // Item view options
   $('#itemShow').on('click', function () {
     $('#itemView').toggle()
     $('#pokemonView').hide()
