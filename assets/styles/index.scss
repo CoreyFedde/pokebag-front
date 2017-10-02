@@ -41,3 +41,14 @@ body {
   background-color: white;
   border: thin solid black;
 };
+
+.text-box {
+  background-color: white;
+  border: thin solid black;
+  height: 200px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
