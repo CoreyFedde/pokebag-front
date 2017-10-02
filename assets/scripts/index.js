@@ -9,6 +9,8 @@ $(() => {
   $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
   $('#storeView').hide()
+  $('#pokemonBoard').hide()
+  $('#itemBoard').hide()
   $('#pokemonView').hide()
   $('#itemView').hide()
   $('#testButton').on('click', function () {
@@ -18,16 +20,29 @@ $(() => {
     $('#storeView').toggle()
     $('#pokemonView').hide()
     $('#itemView').hide()
+    $('#menu').hide()
+    $('#body').css('background-image', "url('https://cdn.bulbagarden.net/upload/f/f8/Pok%C3%A9_Mart_interior_FRLG.png')")
+    $('#storeModal').modal('toggle')
+  })
+  $('#pokemonStoreButton').on('click', function () {
+    $('#pokemonBoard').show()
+    $('#storeModal').modal('toggle')
+  })
+  $('#itemStoreButton').on('click', function () {
+    $('#itemBoard').show()
+    $('#storeModal').modal('toggle')
   })
   $('#pokemonShow').on('click', function () {
     $('#pokemonView').toggle()
     $('#storeView').hide()
     $('#itemView').hide()
+    $('#menu').hide()
   })
   $('#itemShow').on('click', function () {
     $('#itemView').toggle()
     $('#pokemonView').hide()
     $('#storeView').hide()
+    $('#menu').hide()
   })
   $('#pokemonBoard').on('click', '.pokemon-selector', function (event) {
     const parent = $(event.target).parent('div')

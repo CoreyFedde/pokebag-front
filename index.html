@@ -11,7 +11,7 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
+    <body id="body" class="container-fluid">
       <h1 id="bodyText">Body</h1>
       <h1 id="testButton">Test Button</h1>
       <div id="menu" class="menu">
@@ -49,7 +49,7 @@
 </button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+<div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -59,7 +59,12 @@
         </button>
       </div>
       <div class="modal-body">
-        Pokemon
+        <h1> Welcome to the store!</h1>
+        <h3> What are you looking for? </h3>
+        <ul>
+          <li id="pokemonStoreButton">Pokemon</li>
+          <li id="itemStoreButton">Items</li>
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
