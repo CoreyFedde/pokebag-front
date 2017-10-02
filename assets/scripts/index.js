@@ -73,6 +73,7 @@ $(() => {
     $('#storeView').hide()
     $('#itemView').hide()
     $('#menu').hide()
+    $('#body').css('background-image', "url('https://i.imgur.com/OWtmgr7.png')")
   })
 
   // Item view options
@@ -82,6 +83,7 @@ $(() => {
     $('#pokemonView').hide()
     $('#storeView').hide()
     $('#menu').hide()
+    $('#body').css('background-image', "url('https://i.imgur.com/DoyaAtv.png')")
   })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')
