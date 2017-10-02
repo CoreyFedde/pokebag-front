@@ -1,6 +1,6 @@
 {{#each items as |item|}}
-<div class="item-card">
+<div id="{{item.name}}Card"class="item-card">
   <h1>{{item.name}}</h1>
-  <h5>Pick</h5>
+  <h5 id="pickItem" class="item-selector" data-target='#{{item.name}}Card' data-name='{{item.name}}'>Pick</h5>
 </div>
 {{/each}}

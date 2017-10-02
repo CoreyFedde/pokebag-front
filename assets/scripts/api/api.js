@@ -4,6 +4,7 @@ const config = require('../config.js')
 const onePokemonTemplate = require('../templates/show-one-pokemon.handlebars')
 const pokemonTemplate = require('../templates/show-all-pokemon.handlebars')
 const itemTemplate = require('../templates/show-all-items.handlebars')
+const oneItemTemplate = require('../templates/show-one-item.handlebars')
 
 const getAllPokemon = function () {
   return $.ajax({
@@ -58,9 +59,13 @@ const onGetOnePokemon = function (data) {
     // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
-const onGetOneItem = function (event) {
-  getOneItem()
-    .then((data) => console.log('data: ', data))
+const onGetOneItem = function (data) {
+  getOneItem(data)
+    .then((data) => {
+      const itemHTML = oneItemTemplate({ item: data })
+      $('#itemSelectionBoard').append(itemHTML)
+    })
+    // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
 module.exports = {

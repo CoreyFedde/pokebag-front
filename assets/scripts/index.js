@@ -62,6 +62,19 @@ $(() => {
     parent.toggle()
     $(data).show()
   })
+  $('#itemBoard').on('click', '#pickItem', function (event) {
+    const parent = $(event.target).parent('div')
+    parent.toggle()
+    const data = $(this).attr('data-name')
+    // console.log(this)
+    api.onGetOneItem(data)
+  })
+  $('#itemSelectionBoard').on('click', '#removeItem', function (event) {
+    const data = $(this).attr('data-target')
+    const parent = $(event.target).parent('div')
+    parent.toggle()
+    $(data).show()
+  })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')
   // })
