@@ -18,7 +18,7 @@ $(() => {
   })
   // Store options
   $('#storeShow').on('click', function () {
-    $('#storeView').toggle()
+    $('#storeView').show()
     $('#pokemonView').hide()
     $('#itemView').hide()
     $('#menu').hide()
@@ -27,27 +27,17 @@ $(() => {
   })
   $('#pokemonStoreButton').on('click', function () {
     $('#pokemonBoard').show()
+    $('#pokemonSelectionBoard').show()
+    $('#itemBoard').hide()
+    $('#itemSelectionBoard').hide()
     $('#storeModal').modal('toggle')
   })
   $('#itemStoreButton').on('click', function () {
     $('#itemBoard').show()
+    $('#itemSelectionBoard').show()
+    $('#pokemonBoard').hide()
+    $('#pokemonSelectionBoard').hide()
     $('#storeModal').modal('toggle')
-  })
-
-  // Pokemon view options
-  $('#pokemonShow').on('click', function () {
-    $('#pokemonView').toggle()
-    $('#storeView').hide()
-    $('#itemView').hide()
-    $('#menu').hide()
-  })
-
-  // Item view options
-  $('#itemShow').on('click', function () {
-    $('#itemView').toggle()
-    $('#pokemonView').hide()
-    $('#storeView').hide()
-    $('#menu').hide()
   })
   $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
     const parent = $(event.target).parent('div')
@@ -74,6 +64,22 @@ $(() => {
     const parent = $(event.target).parent('div')
     parent.toggle()
     $(data).show()
+  })
+
+  // Pokemon view options
+  $('#pokemonShow').on('click', function () {
+    $('#pokemonView').show()
+    $('#storeView').hide()
+    $('#itemView').hide()
+    $('#menu').hide()
+  })
+
+  // Item view options
+  $('#itemShow').on('click', function () {
+    $('#itemView').show()
+    $('#pokemonView').hide()
+    $('#storeView').hide()
+    $('#menu').hide()
   })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')
