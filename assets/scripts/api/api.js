@@ -25,9 +25,9 @@ const getAllItems = function () {
     method: 'GET'
   })
 }
-const getOneItem = function () {
+const getOneItem = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/item/' + 1,
+    url: config.apiOrigin + '/item/' + data,
     method: 'GET'
   })
 }
