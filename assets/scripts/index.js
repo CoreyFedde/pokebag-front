@@ -69,6 +69,7 @@ $(() => {
   // Pokemon view options
   $('#pokemonShow').on('click', function () {
     $('#pokemonView').show()
+    $('#pokemonSelect').show()
     $('#storeView').hide()
     $('#itemView').hide()
     $('#menu').hide()
@@ -77,6 +78,7 @@ $(() => {
   // Item view options
   $('#itemShow').on('click', function () {
     $('#itemView').show()
+    $('#itemSelect').show()
     $('#pokemonView').hide()
     $('#storeView').hide()
     $('#menu').hide()

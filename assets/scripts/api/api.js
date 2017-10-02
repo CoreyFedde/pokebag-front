@@ -54,7 +54,7 @@ const onGetOnePokemon = function (data) {
   getOnePokemon(data)
     .then((data) => {
       const pokemonHTML = onePokemonTemplate({ pokemon: data })
-      $('#pokemonSelectionBoard').append(pokemonHTML)
+      $('.pokemon-selection-board').append(pokemonHTML)
     })
     // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
@@ -63,7 +63,7 @@ const onGetOneItem = function (data) {
   getOneItem(data)
     .then((data) => {
       const itemHTML = oneItemTemplate({ item: data })
-      $('#itemSelectionBoard').append(itemHTML)
+      $('.item-selection-board').append(itemHTML)
     })
     // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
