@@ -49,14 +49,18 @@ $(() => {
     $('#storeView').hide()
     $('#menu').hide()
   })
-  $('#pokemonBoard').on('click', '.pokemon-selector', function (event) {
+  $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
     const parent = $(event.target).parent('div')
     parent.toggle()
-    let data = $(this).attr('data-name')
+    const data = $(this).attr('data-name')
     // console.log(this)
     api.onGetOnePokemon(data)
-    console.log()
-    console.log('Calling single ajax request for left!')
+  })
+  $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
+    const data = $(this).attr('data-target')
+    const parent = $(event.target).parent('div')
+    parent.toggle()
+    $(data).show()
   })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')
