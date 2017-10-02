@@ -51,7 +51,12 @@ $(() => {
   })
   $('#pokemonBoard').on('click', '.pokemon-selector', function (event) {
     const parent = $(event.target).parent('div')
-    parent.css('background-color', 'green')
+    parent.toggle()
+    let data = $(this).attr('data-name')
+    // console.log(this)
+    api.onGetOnePokemon(data)
+    console.log()
+    console.log('Calling single ajax request for left!')
   })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')

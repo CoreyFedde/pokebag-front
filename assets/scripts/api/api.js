@@ -1,6 +1,7 @@
 'use strict'
 // const store = require('../store.js')
 const config = require('../config.js')
+const onePokemonTemplate = require('../templates/show-one-pokemon.handlebars')
 const pokemonTemplate = require('../templates/show-all-pokemon.handlebars')
 const itemTemplate = require('../templates/show-all-items.handlebars')
 
@@ -10,9 +11,9 @@ const getAllPokemon = function () {
     method: 'GET'
   })
 }
-const getOnePokemon = function () {
+const getOnePokemon = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/pokemon/' + 1,
+    url: config.apiOrigin + '/pokemon/' + data,
     method: 'GET'
   })
 }
@@ -46,9 +47,15 @@ const onGetAllItems = function (event) {
     })
     .catch((error) => console.log(error))
 }
-const onGetOnePokemon = function (event) {
-  getOnePokemon()
-    .then((data) => console.log('data: ', data))
+const onGetOnePokemon = function (data) {
+  // const data = $(this).attr('data-name')
+  // console.log(data)
+  getOnePokemon(data)
+    .then((data) => {
+      const pokemonHTML = onePokemonTemplate({ pokemon: data })
+      $('#pokemonSelectionBoard').append(pokemonHTML)
+    })
+    // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
 const onGetOneItem = function (event) {
