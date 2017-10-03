@@ -65,6 +65,7 @@ $(() => {
     if (classCheck === true) {
       $(targetCard).remove()
     }
+    $('#inspectPokemonBoard').text('Loading...')
   })
   $('#pokemonBoard').on('click', '#inspectPokemon', function (event) {
     // const parent = $(event.target).parent('div')
