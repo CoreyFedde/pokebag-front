@@ -1,6 +1,7 @@
 'use strict'
 // const store = require('../store.js')
 const config = require('../config.js')
+const inspectItemTemplate = require('../templates/inspect-item.handlebars')
 const inspectPokemonTemplate = require('../templates/inspect-pokemon.handlebars')
 const onePokemonTemplate = require('../templates/show-one-pokemon.handlebars')
 const pokemonTemplate = require('../templates/show-all-pokemon.handlebars')
@@ -50,8 +51,6 @@ const onGetAllItems = function (event) {
     .catch((error) => console.log(error))
 }
 const onInspectPokemon = function (data) {
-  // const data = $(this).attr('data-name')
-  // console.log(data)
   $('#inspectPokemonModal').modal('show')
   getOnePokemon(data)
     .then((data) => {
@@ -64,32 +63,29 @@ const onInspectPokemon = function (data) {
       $(targetCard).hide()
       $(targetCard).hasClass()
     })
-    // .then((data) => {
-    //   $('#inspectPokemonModal').modal('show')
-      // const pokemonHTML = inspectPokemonTemplate({ pokemon: data })
-      // $('.pokemon-selection-board').append(pokemonHTML)
-    // })
-    // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
 const onGetOnePokemon = function (data) {
   getOnePokemon(data)
     .then((data) => {
-      // const targetCard = '#' + data.name + 'SelectorCard'
-      // const inspectHTML = inspectPokemonTemplate({ pokemon: data })
-      // $('#inspectPokemonBoard').text('')
-      // $('#inspectPokemonBoard').append(inspectHTML)
       const pokemonHTML = onePokemonTemplate({ pokemon: data })
       $('.pokemon-selection-board').append(pokemonHTML)
-      // $(targetCard).hide()
-      // $(targetCard).hasClass()
     })
-    // .then((data) => {
-    //   $('#inspectPokemonModal').modal('show')
-      // const pokemonHTML = inspectPokemonTemplate({ pokemon: data })
-      // $('.pokemon-selection-board').append(pokemonHTML)
-    // })
-    // .then((data) => console.log('data: ', data))
+    .catch((error) => console.log(error))
+}
+const onInspectItem = function (data) {
+  $('#inspectItemModal').modal('show')
+  getOneItem(data)
+    .then((data) => {
+      const targetCard = '#' + data.name + 'SelectorCard'
+      const inspectHTML = inspectItemTemplate({ item: data })
+      $('#inspectItemBoard').text('')
+      $('#inspectItemBoard').append(inspectHTML)
+      const itemHTML = oneItemTemplate({ item: data })
+      $('.item-selection-board').append(itemHTML)
+      $(targetCard).hide()
+      $(targetCard).hasClass()
+    })
     .catch((error) => console.log(error))
 }
 const onGetOneItem = function (data) {
@@ -106,5 +102,6 @@ module.exports = {
   onGetAllItems,
   onGetOnePokemon,
   onGetOneItem,
-  onInspectPokemon
+  onInspectPokemon,
+  onInspectItem
 }

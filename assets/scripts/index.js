@@ -50,6 +50,33 @@ $(() => {
     const data = $(this).attr('data-name')
     api.onGetOnePokemon(data)
   })
+  $('#itemBoard').on('click', '#pickItem', function (event) {
+    const parent = $(event.target).parent('div')
+    parent.toggle()
+    const data = $(this).attr('data-name')
+    api.onGetOneItem(data)
+  })
+  $('#inspectItemBoard').on('click', '#addItem', function (event) {
+    const targetCard = $(this).attr('data-target')
+    const secondTarget = $(this).attr('data-second-target')
+    $(targetCard).show()
+    $(targetCard).removeClass('inspect')
+    $(secondTarget).hide()
+    $('#inspectItemModal').modal('hide')
+  })
+  $('#inspectItemModal').on('hidden.bs.modal', function (e) {
+    const item = $('#inspectModalItem').text()
+    const targetCard = '#' + item + 'SelectorCard'
+    const classCheck = $(targetCard).hasClass('inspect')
+    if (classCheck === true) {
+      $(targetCard).remove()
+    }
+    $('#inspectItemBoard').text('Loading...')
+  })
+  $('#itemBoard').on('click', '#inspectItem', function (event) {
+    const data = $(this).attr('data-name')
+    api.onInspectItem(data)
+  })
   $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
     const targetCard = $(this).attr('data-target')
     const secondTarget = $(this).attr('data-second-target')
@@ -78,13 +105,6 @@ $(() => {
     const parent = $(event.target).parent('div')
     parent.toggle()
     $(data).show()
-  })
-  $('#itemBoard').on('click', '#pickItem', function (event) {
-    const parent = $(event.target).parent('div')
-    parent.toggle()
-    const data = $(this).attr('data-name')
-    // console.log(this)
-    api.onGetOneItem(data)
   })
   $('#itemSelectionBoard').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-target')
