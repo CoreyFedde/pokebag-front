@@ -105,8 +105,10 @@ $(() => {
   $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
     const data = $(this).attr('data-target')
     const parent = $(event.target).parent('div')
+    const card = $(this).attr('data-card')
     parent.toggle()
     $(data).show()
+    $(card).remove()
     pokemonCount -= 1
     console.log(pokemonCount)
   })
