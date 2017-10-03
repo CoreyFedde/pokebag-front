@@ -7,10 +7,11 @@ const onePokemonTemplate = require('../templates/show-one-pokemon.handlebars')
 const pokemonTemplate = require('../templates/show-all-pokemon.handlebars')
 const itemTemplate = require('../templates/show-all-items.handlebars')
 const oneItemTemplate = require('../templates/show-one-item.handlebars')
+const rareTemplate = require('../templates/show-rare-candy.handlebars')
 
 const getAllPokemon = function () {
   return $.ajax({
-    url: config.apiOrigin + '/pokemon/',
+    url: config.apiOrigin + '/pokemon/?limit=811',
     method: 'GET'
   })
 }
@@ -23,7 +24,7 @@ const getOnePokemon = function (data) {
 
 const getAllItems = function () {
   return $.ajax({
-    url: config.apiOrigin + '/item/',
+    url: config.apiOrigin + '/item/?limit=746',
     method: 'GET'
   })
 }
@@ -97,6 +98,15 @@ const onGetOneItem = function (data) {
     // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
+const onGetRareCandy = function () {
+  getOneItem('rare-candy')
+    .then((data) => {
+      const itemHTML = rareTemplate({ item: data })
+      $('#itemBoard').prepend(itemHTML)
+    })
+    // .then((data) => console.log('data: ', data))
+    .catch((error) => console.log(error))
+}
 
 module.exports = {
   onGetAllPokemon,
@@ -104,5 +114,6 @@ module.exports = {
   onGetOnePokemon,
   onGetOneItem,
   onInspectPokemon,
-  onInspectItem
+  onInspectItem,
+  onGetRareCandy
 }

@@ -9,6 +9,7 @@ $(() => {
   setAPIOrigin(location, config)
   api.onGetAllItems()
   api.onGetAllPokemon()
+  api.onGetRareCandy()
   // $('#bodyText').on('click', api.onGetAllItems)
   // $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
