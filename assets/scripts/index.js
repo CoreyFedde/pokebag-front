@@ -10,6 +10,9 @@ $(() => {
   // $('#bodyText').on('click', api.onGetAllItems)
   // $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
+  $('#closeMenu').on('click', function () {
+    $('#menu').hide()
+  })
   $('#storeView').hide()
   $('#pokemonBoard').hide()
   $('#itemBoard').hide()

@@ -5,6 +5,12 @@ body {
   background: url("https://i.imgur.com/wrxBmkr.jpg") no-repeat center center fixed;
   background-size: cover;
 }
+.menu-button {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 100px;
+}
 .menu {
     height: 100%;
     width: 450;
