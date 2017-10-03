@@ -5,8 +5,10 @@ const config = require('./config')
 
 $(() => {
   setAPIOrigin(location, config)
-  $('#bodyText').on('click', api.onGetAllItems)
-  $('#bodyText').on('click', api.onGetAllPokemon)
+  api.onGetAllItems()
+  api.onGetAllPokemon()
+  // $('#bodyText').on('click', api.onGetAllItems)
+  // $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
   $('#storeView').hide()
   $('#pokemonBoard').hide()
