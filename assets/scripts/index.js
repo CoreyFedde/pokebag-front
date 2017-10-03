@@ -48,15 +48,20 @@ $(() => {
     api.onGetOnePokemon(data)
   })
   $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
-    const parent = $(event.target).parent('div')
-    parent.toggle()
-    let targetCard = $(this).attr('data-target')
-    let secondTarget = $(this).attr('data-second-target')
+    const targetCard = $(this).attr('data-target')
+    const secondTarget = $(this).attr('data-second-target')
     $(targetCard).show()
+    $(targetCard).removeClass('inspect')
     $(secondTarget).hide()
-    // const data = $(this).attr('data-name')
-    // console.log(this)
-    // api.onGetOnePokemon(data)
+    $('#inspectPokemonModal').modal('hide')
+  })
+  $('#inspectPokemonModal').on('hidden.bs.modal', function (e) {
+    const pokemon = $('#inspectModalPokemon').text()
+    const targetCard = '#' + pokemon + 'SelectorCard'
+    const classCheck = $(targetCard).hasClass('inspect')
+    if (classCheck === true) {
+      $(targetCard).remove()
+    }
   })
   $('#pokemonBoard').on('click', '#inspectPokemon', function (event) {
     // const parent = $(event.target).parent('div')
