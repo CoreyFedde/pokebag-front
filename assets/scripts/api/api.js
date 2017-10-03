@@ -97,6 +97,7 @@ const onGetOneItem = function (data) {
     // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
 }
+
 module.exports = {
   onGetAllPokemon,
   onGetAllItems,

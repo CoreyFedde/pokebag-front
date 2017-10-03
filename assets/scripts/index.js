@@ -4,6 +4,8 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 
 $(() => {
+  let pokemonCount = 0
+  let itemCount = 0
   setAPIOrigin(location, config)
   api.onGetAllItems()
   api.onGetAllPokemon()
@@ -44,26 +46,6 @@ $(() => {
     $('#pokemonSelectionBoard').hide()
     $('#storeModal').modal('toggle')
   })
-  $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
-    const parent = $(event.target).parent('div')
-    parent.toggle()
-    const data = $(this).attr('data-name')
-    api.onGetOnePokemon(data)
-  })
-  $('#itemBoard').on('click', '#pickItem', function (event) {
-    const parent = $(event.target).parent('div')
-    parent.toggle()
-    const data = $(this).attr('data-name')
-    api.onGetOneItem(data)
-  })
-  $('#inspectItemBoard').on('click', '#addItem', function (event) {
-    const targetCard = $(this).attr('data-target')
-    const secondTarget = $(this).attr('data-second-target')
-    $(targetCard).show()
-    $(targetCard).removeClass('inspect')
-    $(secondTarget).hide()
-    $('#inspectItemModal').modal('hide')
-  })
   $('#inspectItemModal').on('hidden.bs.modal', function (e) {
     const item = $('#inspectModalItem').text()
     const targetCard = '#' + item + 'SelectorCard'
@@ -76,14 +58,6 @@ $(() => {
   $('#itemBoard').on('click', '#inspectItem', function (event) {
     const data = $(this).attr('data-name')
     api.onInspectItem(data)
-  })
-  $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
-    const targetCard = $(this).attr('data-target')
-    const secondTarget = $(this).attr('data-second-target')
-    $(targetCard).show()
-    $(targetCard).removeClass('inspect')
-    $(secondTarget).hide()
-    $('#inspectPokemonModal').modal('hide')
   })
   $('#inspectPokemonModal').on('hidden.bs.modal', function (e) {
     const pokemon = $('#inspectModalPokemon').text()
@@ -100,17 +74,75 @@ $(() => {
     const data = $(this).attr('data-name')
     api.onInspectPokemon(data)
   })
+
+  $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
+    if (pokemonCount < 6) {
+      const parent = $(event.target).parent('div')
+      parent.toggle()
+      const data = $(this).attr('data-name')
+      api.onGetOnePokemon(data)
+      pokemonCount += 1
+      console.log(pokemonCount)
+    } else {
+      console.log('max number of pokemon reached!')
+    }
+  })
+  $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
+    if (pokemonCount < 6) {
+      const targetCard = $(this).attr('data-target')
+      const secondTarget = $(this).attr('data-second-target')
+      $(targetCard).show()
+      $(targetCard).removeClass('inspect')
+      $(secondTarget).hide()
+      $('#inspectPokemonModal').modal('hide')
+      pokemonCount += 1
+      console.log(pokemonCount)
+    } else {
+      console.log('max number of pokemon reached!')
+    }
+  })
   $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
     const data = $(this).attr('data-target')
     const parent = $(event.target).parent('div')
     parent.toggle()
     $(data).show()
+    pokemonCount -= 1
+    console.log(pokemonCount)
+  })
+
+  $('#itemBoard').on('click', '#pickItem', function (event) {
+    if (itemCount < 10) {
+      const parent = $(event.target).parent('div')
+      parent.toggle()
+      const data = $(this).attr('data-name')
+      api.onGetOneItem(data)
+      itemCount += 1
+      console.log(itemCount)
+    } else {
+      console.log('max number of items reached!')
+    }
+  })
+  $('#inspectItemBoard').on('click', '#addItem', function (event) {
+    if (itemCount < 10) {
+      const targetCard = $(this).attr('data-target')
+      const secondTarget = $(this).attr('data-second-target')
+      $(targetCard).show()
+      $(targetCard).removeClass('inspect')
+      $(secondTarget).hide()
+      $('#inspectItemModal').modal('hide')
+      itemCount += 1
+      console.log(itemCount)
+    } else {
+      console.log('max number of items reached!')
+    }
   })
   $('#itemSelectionBoard').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-target')
     const parent = $(event.target).parent('div')
     parent.toggle()
     $(data).show()
+    itemCount -= 1
+    console.log(itemCount)
   })
 
   // Pokemon view options
