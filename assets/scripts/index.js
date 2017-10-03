@@ -49,8 +49,11 @@ $(() => {
   })
   $('#inspectItemModal').on('hidden.bs.modal', function (e) {
     const item = $('#inspectModalItem').text()
-    const targetCard = '#' + item + 'SelectorCard'
+    const targetCard = '.' + item + '-selector-card'
     const classCheck = $(targetCard).hasClass('inspect')
+    console.log(item)
+    console.log(targetCard)
+    console.log(classCheck)
     if (classCheck === true) {
       $(targetCard).remove()
     }
@@ -142,7 +145,9 @@ $(() => {
   $('#itemSelectionBoard').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-target')
     const parent = $(event.target).parent('div')
+    const card = $(this).attr('data-card')
     parent.toggle()
+    $(card).remove()
     $(data).show()
     itemCount -= 1
     console.log(itemCount)

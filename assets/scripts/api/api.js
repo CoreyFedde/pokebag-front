@@ -79,7 +79,7 @@ const onInspectItem = function (data) {
   $('#inspectItemModal').modal('show')
   getOneItem(data)
     .then((data) => {
-      const targetCard = '#' + data.name + 'SelectorCard'
+      const targetCard = '.' + data.name + '-selector-card'
       const inspectHTML = inspectItemTemplate({ item: data })
       $('#inspectItemBoard').text('')
       $('#inspectItemBoard').append(inspectHTML)
