@@ -1,19 +1,61 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+html,
+body {
+  height: 100%;
+}
 body {
   background: url("https://i.imgur.com/dBgzE6u.jpg") no-repeat center center fixed;
   background-size: cover;
 }
+.modal-body {
+  border: double thick;
+}
 .menu-button {
-  top: 0;
-  right: 0;
-  position: absolute;
-  width: 100px;
+  // top: 0;
+  // right: 0;
+  // position: absolute;
+  // width: 200px;
+  // padding: 20px;
+  // margin-right: 5%;
+  background-color: white;
+}
+.header {
+  background-color: white;
+  border: double thick;
+}
+.item-selection-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.pokemon-selection-board {
+  background-color: white;
+  border: double thick;
+  max-height: 300px;
+  overflow: scroll;
+}
+.item-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.pokemon-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.store-text {
+  background-color: white;
+  border: double thick;
 }
 .menu {
-    height: 100%;
-    width: 450;
+    height: 80%;
+    // width: 40%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -22,6 +64,7 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    border: double thick;
 }
 
 .menu a {
@@ -38,15 +81,15 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
-.pokemon-card {
-  background-color: white;
-  border: thin solid black;
-}
-
-.item-card {
-  background-color: white;
-  border: thin solid black;
-};
+// .pokemon-card {
+//   background-color: white;
+//   border: thin solid black;
+// }
+//
+// .item-card {
+//   background-color: white;
+//   border: thin solid black;
+// };
 
 .text-box {
   background-color: white;

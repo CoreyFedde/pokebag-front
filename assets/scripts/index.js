@@ -24,13 +24,24 @@ $(() => {
   $('#testButton').on('click', function () {
     $('#menu').toggle()
   })
+  // Home view
+  $('#homeShow').on('click', function () {
+    $('#location').text('Home')
+    $('#pokemonView').hide()
+    $('#pokemonSelect').hide()
+    $('#storeView').hide()
+    $('#itemView').hide()
+    $('#menu').hide()
+    $('#body').css('background-image', "url('https://i.imgur.com/dBgzE6u.jpg')")
+  })
   // Store options
   $('#storeShow').on('click', function () {
     $('#storeView').show()
+    $('#location').text('Store')
     $('#pokemonView').hide()
     $('#itemView').hide()
     $('#menu').hide()
-    $('#body').css('background-image', "url('https://cdn.bulbagarden.net/upload/f/f8/Pok%C3%A9_Mart_interior_FRLG.png')")
+    $('#body').css('background-image', "url('https://i.imgur.com/jnOhaDG.jpg')")
     $('#storeModal').modal('toggle')
   })
   $('#pokemonStoreButton').on('click', function () {
@@ -155,22 +166,24 @@ $(() => {
 
   // Pokemon view options
   $('#pokemonShow').on('click', function () {
+    $('#location').text('Pokemon')
     $('#pokemonView').show()
     $('#pokemonSelect').show()
     $('#storeView').hide()
     $('#itemView').hide()
     $('#menu').hide()
-    $('#body').css('background-image', "url('https://i.imgur.com/OWtmgr7.png')")
+    $('#body').css('background-image', "none")
   })
 
   // Item view options
   $('#itemShow').on('click', function () {
+    $('#location').text('Items')
     $('#itemView').show()
     $('#itemSelect').show()
     $('#pokemonView').hide()
     $('#storeView').hide()
     $('#menu').hide()
-    $('#body').css('background-image', "url('https://i.imgur.com/DoyaAtv.png')")
+    $('#body').css('background-image', "url('https://i.imgur.com/4yT1BIZ.png')")
   })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')

@@ -12,30 +12,50 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body id="body" class="container-fluid">
-      <h1 id="testButton" class="menu-button">Menu</h1>
-      <div id="menu" class="menu">
-        <a id='closeMenu' href="#">Close</a>
-        <a id='storeShow' href="#">Store</a>
-        <a id='pokemonShow' href="#">Pokemon</a>
-        <a id='itemShow' href="#">Items</a>
+      <div class="row header">
+        <div class="col-xs-11">
+          <h4 id="location">Home</h4>
+        </div>
+        <div class="col-xs-1">
+        <h4 id="testButton" class="menu-button">Menu</h4>
+        </div>
+      </div>
+      <div id="menu" class="col-md-4 col-md-offset-8 menu">
+        <a id='homeShow' href="#"><h1>HOME</h1></a>
+        <a id='storeShow' href="#"><h1>STORE</h1></a>
+        <a id='pokemonShow' href="#"><h1>POKEMON</h1></a></a>
+        <a id='itemShow' href="#"><h1>ITEMS</h1></a>
+        <a id='closeMenu' href="#"><h1>EXIT</h1></a>
       </div>
       <!-- <div class="text-box">
         This is where text will go...
       </div> -->
 
       <div id='storeView' class="store">
-        <h1>store</h1>
         <div class="row">
-          <div id="pokemonSelectionBoard" class="col-md-6 pokemon-selection-board">
+          <div class="col-md-6">
+            <div class="col-md-6">
+              <ul class="store-text">
+              <li><h3>Pokemon</h3></li>
+              <li><h3>Items</h3></li>
+              </ul>
+            </div>
+              <div id="pokemonSelectionBoard" class="col-md-12 pokemon-selection-board">
+                <h1>Your Team</h1>
+              </div>
+              <div id="itemSelectionBoard" class="col-md-12 item-selection-board">
+                <h1>Your Bag</h1>
+              </div>
+            </div>
+          <div id="pokemonBoard" class="pokemon-board col-md-6">
+            <h1>Pokemon in stock</h1>
           </div>
-          <div id="pokemonBoard" class="col-md-6">
+          <div id="itemBoard" class="item-board col-md-6">
+            <h1>Items in stock</h1>
           </div>
         </div>
         <div class="row">
-          <div id="itemSelectionBoard" class="col-md-6 item-selection-board">
-          </div>
-          <div id="itemBoard" class="col-md-6">
-          </div>
+
         </div>
         <!-- <div id="pokemonBoard">
         </div>
@@ -46,7 +66,7 @@
         <div class="row">
           <div class="col-md-6">
           </div>
-          <div id="pokemonSelect" class="col-md-6 pokemon-selection-board">
+          <div id="pokemonSelect" class="col-md-8 col-md-offset-2 pokemon-selection-board">
             <!-- <svg x="0px" y="0px" width="50px" height="50px" viewBox="0 0 864 864" enable-background="new 0 0 864 864" xml:space="preserve">
               <circle fill-rule="evenodd" clip-rule="evenodd" cx="447.178" cy="447.639" r="348.003"/>
               <g>
@@ -84,12 +104,6 @@
 <div class="modal fade" id="inspectPokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pokemonModalLabel">Pokemon Inspection</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div id="inspectPokemonBoard" class="modal-body">
         Loading...
       </div>
@@ -100,12 +114,6 @@
 <div class="modal fade" id="inspectItemModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pokemonModalLabel">Item Inspection</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div id="inspectItemBoard" class="modal-body">
         Loading...
       </div>
@@ -116,12 +124,6 @@
 <div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pokemonModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <div class="modal-body">
         <h1> Welcome to the store!</h1>
         <h3> What are you looking for? </h3>
@@ -130,12 +132,9 @@
           <li id="itemStoreButton">Items</li>
         </ul>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
+</div>
 </div>
     </body>
 </html>

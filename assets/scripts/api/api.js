@@ -95,6 +95,8 @@ const onGetOneItem = function (data) {
     .then((data) => {
       const itemHTML = oneItemTemplate({ item: data })
       $('.item-selection-board').append(itemHTML)
+      $('.inspect-button').hide()
+      $('.use-button').hide()
     })
     // .then((data) => console.log('data: ', data))
     .catch((error) => console.log(error))
