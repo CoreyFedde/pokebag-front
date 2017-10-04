@@ -167,28 +167,42 @@ $(() => {
       console.log('max number of items reached!')
     }
   })
-  $('#inspectItemBoard').on('click', '#addItem', function (event) {
-    if (itemCount < 10) {
-      const targetCard = $(this).attr('data-target')
-      console.log(targetCard)
-      const secondTarget = $(this).attr('data-second-target')
-      $(targetCard).show()
-      $(targetCard).removeClass('inspect')
-      $(secondTarget).hide()
-      $('#inspectItemModal').modal('hide')
-      itemCount += 1
-      console.log(itemCount)
-    } else {
-      console.log('max number of items reached!')
-    }
-  })
+  // $('#inspectItemBoard').on('click', '#addItem', function (event) {
+  //   if (itemCount < 10) {
+  //     const targetCard = $(this).attr('data-target')
+  //     console.log(targetCard)
+  //     const secondTarget = $(this).attr('data-second-target')
+  //     $(targetCard).show()
+  //     $(targetCard).removeClass('inspect')
+  //     $(secondTarget).hide()
+  //     $('#inspectItemModal').modal('hide')
+  //     itemCount += 1
+  //     console.log(itemCount)
+  //   } else {
+  //     console.log('max number of items reached!')
+  //   }
+  // })
   $('#itemSelectionBoard').on('click', '#removeItem', function (event) {
-    const data = $(this).attr('data-target')
-    const parent = $(event.target).parent('div')
-    const card = $(this).attr('data-card')
-    parent.toggle()
-    $(card).remove()
-    $(data).show()
+    const data = $(this).attr('data-name')
+    const pickButton = '.' + data + '-pick-button'
+    const removeButton = '.' + data + '-remove-button'
+    const useButton = '.' + data + '-use-button'
+    // const parent = '#' + data + 'Card'
+    // $(parent).toggle()
+    // api.onGetOneItem(data)
+    const targetCard = $(this).attr('data-target')
+    // const secondTarget = $(this).attr('data-second-target')
+    // $(targetCard).removeClass('inspect')
+    $(targetCard).toggle()
+    $(pickButton).toggle()
+    $(removeButton).toggle()
+    $(useButton).toggle()
+    // const data = $(this).attr('data-target')
+    // const parent = $(event.target).parent('div')
+    // const card = $(this).attr('data-card')
+    // parent.toggle()
+    // $(card).remove()
+    // $(data).show()
     itemCount -= 1
     console.log(itemCount)
   })
