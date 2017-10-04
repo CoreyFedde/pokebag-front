@@ -1,0 +1,53 @@
+'use strict'
+const api = require('.././api/events.js')
+
+const setItemView = function () {
+  $('#location').text('Items')
+  $('#itemView').show()
+  $('#itemSelect').show()
+  $('#pokemonView').hide()
+  $('#storeView').hide()
+  $('#menu').hide()
+  $('#body').css('background-image', "url('https://i.imgur.com/4yT1BIZ.png')")
+}
+const inspectItem = function (event) {
+  const data = $(this).attr('data-name')
+  api.onInspectItem(data)
+}
+const selectUseItem = function () {
+  let data = $(this).attr('data-url')
+  let targetCard = "." + $(this).attr('data-name') + "-card"
+  $(targetCard).addClass('evolve')
+  api.onGetOnePokemonEvolution(data)
+}
+const setUseItem = function (event) {
+  const data = $(this).attr('data-name')
+  const pokeArray = []
+  $('#useItemBoard ul').empty()
+  if (data === 'rare-candy') {
+    $('#useItemModal').modal('show')
+    $('.selected').each(function () {
+      const pokemonName = $(this).attr('data-name')
+      const pokemonUrl = $(this).attr('data-url')
+      if (pokeArray.indexOf(pokemonName) === -1) {
+        pokeArray.push(pokemonName)
+        $('#useItemBoard ul').append(`<li class="${pokemonName}-evolve-card pokemon-use-list" data-name="${pokemonName}" data-url="${pokemonUrl}"><h3>${pokemonName}</h3><li>`)
+      }
+    })
+  } else {
+    console.log('It is not time to use that item right now')
+  }
+}
+// Item view options
+
+const addHandlers = function () {
+  $('#itemShow').on('click', setItemView)
+  $('.item-selection-board').on('click', '#inspectItem', inspectItem)
+  $('.item-view-board').on('click', '#inspectItem', inspectItem)
+  $('.item-view-board').on('click', '#useItem', setUseItem)
+  $('#useItemBoard').on('click', '.pokemon-use-list', selectUseItem)
+}
+
+module.exports = {
+  addHandlers
+}

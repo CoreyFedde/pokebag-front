@@ -2,7 +2,57 @@
 const api = require('./api/events.js')
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
+const store = require('./views/store-view.js')
+const home = require('./views/home-view.js')
+const pokemon = require('./views/pokemon-view.js')
+const item = require('./views/item-view.js')
 
+const selectPokemon = function () {
+  const data = $(this).attr('data-name')
+  const pickButton = '.' + data + '-pick-button'
+  const removeButton = '.' + data + '-remove-button'
+  const useButton = '.' + data + '-use-button'
+  const targetCard = $(this).attr('data-target')
+  $(targetCard).toggle()
+  $(targetCard).addClass('selected')
+  $(pickButton).toggle()
+  $(removeButton).toggle()
+  $(useButton).toggle()
+}
+const removePokemon = function () {
+  const data = $(this).attr('data-name')
+  const pickButton = '.' + data + '-pick-button'
+  const removeButton = '.' + data + '-remove-button'
+  const useButton = '.' + data + '-use-button'
+  const targetCard = $(this).attr('data-target')
+  $(targetCard).toggle()
+  $(targetCard).removeClass('selected')
+  $(pickButton).toggle()
+  $(removeButton).toggle()
+  $(useButton).toggle()
+}
+const selectItem = function () {
+  const data = $(this).attr('data-name')
+  const pickButton = '.' + data + '-pick-button'
+  const removeButton = '.' + data + '-remove-button'
+  const useButton = '.' + data + '-use-button'
+  const targetCard = $(this).attr('data-target')
+  $(targetCard).toggle()
+  $(pickButton).toggle()
+  $(removeButton).toggle()
+  $(useButton).toggle()
+}
+const removeItem = function () {
+  const data = $(this).attr('data-name')
+  const pickButton = '.' + data + '-pick-button'
+  const removeButton = '.' + data + '-remove-button'
+  const useButton = '.' + data + '-use-button'
+  const targetCard = $(this).attr('data-target')
+  $(targetCard).toggle()
+  $(pickButton).toggle()
+  $(removeButton).toggle()
+  $(useButton).toggle()
+}
 $(() => {
   let pokemonCount = 0
   let itemCount = 0
@@ -13,95 +63,15 @@ $(() => {
   // $('#bodyText').on('click', api.onGetAllItems)
   // $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
-  $('#closeMenu').on('click', function () {
-    $('#menu').hide()
-  })
   $('#storeView').hide()
   $('#pokemonBoard').hide()
   $('#itemBoard').hide()
   $('#pokemonView').hide()
   $('#itemView').hide()
-  $('#testButton').on('click', function () {
-    $('#menu').toggle()
-  })
   // Home view
-  $('#homeShow').on('click', function () {
-    $('#location').text('Home')
-    $('#pokemonView').hide()
-    $('#pokemonSelect').hide()
-    $('#storeView').hide()
-    $('#itemView').hide()
-    $('#menu').hide()
-    $('#body').css('background-image', "url('https://i.imgur.com/dBgzE6u.jpg')")
-  })
+  home.addHandlers()
   // Store options
-  $('#viewPokemonStore').on('click', function () {
-    $('#pokemonBoard').show()
-    $('#pokemonSelectionBoard').show()
-    $('#itemBoard').hide()
-    $('#itemSelectionBoard').hide()
-  })
-  $('#viewItemStore').on('click', function () {
-    $('#itemBoard').show()
-    $('#itemSelectionBoard').show()
-    $('#pokemonBoard').hide()
-    $('#pokemonSelectionBoard').hide()
-  })
-  $('#storeShow').on('click', function () {
-    $('#storeView').show()
-    $('#location').text('Store')
-    $('#pokemonView').hide()
-    $('#itemView').hide()
-    $('#menu').hide()
-    $('#body').css('background-image', "url('https://i.imgur.com/jnOhaDG.jpg')")
-    $('#storeModal').modal('toggle')
-  })
-  $('#pokemonStoreButton').on('click', function () {
-    $('#pokemonBoard').show()
-    $('#pokemonSelectionBoard').show()
-    $('#itemBoard').hide()
-    $('#itemSelectionBoard').hide()
-    $('#storeModal').modal('toggle')
-  })
-  $('#itemStoreButton').on('click', function () {
-    $('#itemBoard').show()
-    $('#itemSelectionBoard').show()
-    $('#pokemonBoard').hide()
-    $('#pokemonSelectionBoard').hide()
-    $('#storeModal').modal('toggle')
-  })
-  // $('#inspectItemModal').on('hidden.bs.modal', function (e) {
-  //   const item = $('#inspectModalItem').text()
-  //   const targetCard = '.' + item + '-selector-card'
-  //   const classCheck = $(targetCard).hasClass('inspect')
-  //   console.log(item)
-  //   console.log(targetCard)
-  //   console.log(classCheck)
-  //   if (classCheck === true) {
-  //     $(targetCard).remove()
-  //   }
-  //   $('#inspectItemBoard').text('Loading...')
-  // })
-  $('#itemBoard').on('click', '#inspectItem', function (event) {
-    const data = $(this).attr('data-name')
-    api.onInspectItem(data)
-  })
-  // $('#inspectPokemonModal').on('hidden.bs.modal', function (e) {
-  //   const pokemon = $('#inspectModalPokemon').text()
-  //   const targetCard = '#' + pokemon + 'SelectorCard'
-  //   const classCheck = $(targetCard).hasClass('inspect')
-  //   if (classCheck === true) {
-  //     $(targetCard).remove()
-  //   }
-  //   $('#inspectPokemonBoard').text('Loading...')
-  // })
-  $('#pokemonBoard').on('click', '#inspectPokemon', function (event) {
-    // const parent = $(event.target).parent('div')
-    // parent.css('background-color', 'red')
-    const data = $(this).attr('data-name')
-    api.onInspectPokemon(data)
-  })
-
+  store.addHandlers()
   $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
     if (pokemonCount < 6) {
       const data = $(this).attr('data-name')
@@ -128,20 +98,6 @@ $(() => {
       console.log('max number of pokemon reached!')
     }
   })
-  // $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
-  //   if (pokemonCount < 6) {
-  //     const targetCard = $(this).attr('data-target')
-  //     const secondTarget = $(this).attr('data-second-target')
-  //     $(targetCard).show()
-  //     $(targetCard).removeClass('inspect')
-  //     $(secondTarget).hide()
-  //     $('#inspectPokemonModal').modal('hide')
-  //     pokemonCount += 1
-  //     console.log(pokemonCount)
-  //   } else {
-  //     console.log('max number of pokemon reached!')
-  //   }
-  // })
   $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
     const data = $(this).attr('data-name')
     const pickButton = '.' + data + '-pick-button'
@@ -181,21 +137,6 @@ $(() => {
       console.log('max number of items reached!')
     }
   })
-  // $('#inspectItemBoard').on('click', '#addItem', function (event) {
-  //   if (itemCount < 10) {
-  //     const targetCard = $(this).attr('data-target')
-  //     console.log(targetCard)
-  //     const secondTarget = $(this).attr('data-second-target')
-  //     $(targetCard).show()
-  //     $(targetCard).removeClass('inspect')
-  //     $(secondTarget).hide()
-  //     $('#inspectItemModal').modal('hide')
-  //     itemCount += 1
-  //     console.log(itemCount)
-  //   } else {
-  //     console.log('max number of items reached!')
-  //   }
-  // })
   $('.item-selection-board').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-name')
     const pickButton = '.' + data + '-pick-button'
@@ -225,27 +166,7 @@ $(() => {
   })
 
   // Pokemon view options
-  $('#pokemonShow').on('click', function () {
-    $('#location').text('Pokemon')
-    $('#pokemonView').show()
-    $('#pokemonSelect').show()
-    $('#storeView').hide()
-    $('#itemView').hide()
-    $('#menu').hide()
-    $('#body').css('background-image', 'none')
-  })
-  $('.pokemon-view-board').on('click', '#inspectPokemon', function (event) {
-    // const parent = $(event.target).parent('div')
-    // parent.css('background-color', 'red')
-    const data = $(this).attr('data-name')
-    api.onInspectPokemon(data)
-  })
-  $('.pokemon-selection-board').on('click', '#inspectPokemon', function (event) {
-    // const parent = $(event.target).parent('div')
-    // parent.css('background-color', 'red')
-    const data = $(this).attr('data-name')
-    api.onInspectPokemon(data)
-  })
+  pokemon.addHandlers()
   $('.pokemon-view-board').on('click', '#removePokemon', function (event) {
     const data = $(this).attr('data-name')
     const pickButton = '.' + data + '-pick-button'
@@ -264,63 +185,7 @@ $(() => {
   })
 
   // Item view options
-  $('#itemShow').on('click', function () {
-    $('#location').text('Items')
-    $('#itemView').show()
-    $('#itemSelect').show()
-    $('#pokemonView').hide()
-    $('#storeView').hide()
-    $('#menu').hide()
-    $('#body').css('background-image', "url('https://i.imgur.com/4yT1BIZ.png')")
-  })
-  $('.item-selection-board').on('click', '#inspectItem', function (event) {
-    const data = $(this).attr('data-name')
-    api.onInspectItem(data)
-  })
-  $('.item-view-board').on('click', '#inspectItem', function (event) {
-    const data = $(this).attr('data-name')
-    api.onInspectItem(data)
-  })
-  $('.item-view-board').on('click', '#useItem', function (event) {
-    const data = $(this).attr('data-name')
-    const pokeArray = []
-    if (data === 'rare-candy') {
-      $('#useItemModal').modal('show')
-      $('.selected').each(function () {
-        const pokemonName = $(this).attr('data-name')
-        const pokemonUrl = $(this).attr('data-url')
-        if (pokeArray.indexOf(pokemonName) === -1) {
-          pokeArray.push(pokemonName)
-          $('#useItemBoard ul').append(`<li class="${pokemonName}-evolve-card pokemon-use-list" data-name="${pokemonName}" data-url="${pokemonUrl}"><h3>${pokemonName}</h3><li>`)
-        }
-      })
-      // pokeArray.sort()
-      // let pokeHolder = ''
-      // for (let i = 0; i < pokeArray.length; i++) {
-      //   console.log('pokeholder start: ', pokeHolder)
-      //   if (pokeArray[i] === pokeHolder) {
-      //     pokeArray.shift()
-      //     console.log('match')
-      //     console.log('popped array: ', pokeArray)
-      //   }
-      //   pokeHolder = pokeArray[i]
-      //   console.log('pokeHolder: ', pokeHolder)
-      // }
-      // console.log('new array: ', pokeArray)
-      // $('#useItemBoard ul').append(`<li>${pokemonName}<li>`)
-    } else {
-      console.log('It is not time to use that item right now')
-    }
-  })
-  $('#useItemBoard').on('click', '.pokemon-use-list', function () {
-    let data = $(this).attr('data-url')
-    let targetCard = "." + $(this).attr('data-name') + "-card"
-    $(targetCard).addClass('evolve')
-    api.onGetOnePokemonEvolution(data)
-  })
-  $('#useItemModal').on('hidden.bs.modal', function (e) {
-  })
-
+  item.addHandlers()
   $('.item-view-board').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-name')
     const pickButton = '.' + data + '-pick-button'
