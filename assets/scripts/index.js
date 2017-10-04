@@ -105,42 +105,54 @@ $(() => {
   $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
     if (pokemonCount < 6) {
       const data = $(this).attr('data-name')
-      const parent = '#' + data + 'Card'
-      $(parent).toggle()
+      const pickButton = '.' + data + '-pick-button'
+      const removeButton = '.' + data + '-remove-button'
+      const useButton = '.' + data + '-use-button'
+      // const parent = '#' + data + 'Card'
+      // $(parent).toggle()
       // api.onGetOnePokemon(data)
       const targetCard = $(this).attr('data-target')
-      const secondTarget = $(this).attr('data-second-target')
-      console.log(secondTarget)
+      // const secondTarget = $(this).attr('data-second-target')
+      // console.log(secondTarget)
       // $(targetCard).removeClass('inspect')
-      $(secondTarget).toggle()
+      // $(secondTarget).toggle()
       // $(targetCard).show()
+      $(targetCard).toggle()
+      $(pickButton).toggle()
+      $(removeButton).toggle()
+      $(useButton).toggle()
       pokemonCount += 1
       console.log(pokemonCount)
     } else {
       console.log('max number of pokemon reached!')
     }
   })
-  $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
-    if (pokemonCount < 6) {
-      const targetCard = $(this).attr('data-target')
-      const secondTarget = $(this).attr('data-second-target')
-      $(targetCard).show()
-      $(targetCard).removeClass('inspect')
-      $(secondTarget).hide()
-      $('#inspectPokemonModal').modal('hide')
-      pokemonCount += 1
-      console.log(pokemonCount)
-    } else {
-      console.log('max number of pokemon reached!')
-    }
-  })
+  // $('#inspectPokemonBoard').on('click', '#addPokemon', function (event) {
+  //   if (pokemonCount < 6) {
+  //     const targetCard = $(this).attr('data-target')
+  //     const secondTarget = $(this).attr('data-second-target')
+  //     $(targetCard).show()
+  //     $(targetCard).removeClass('inspect')
+  //     $(secondTarget).hide()
+  //     $('#inspectPokemonModal').modal('hide')
+  //     pokemonCount += 1
+  //     console.log(pokemonCount)
+  //   } else {
+  //     console.log('max number of pokemon reached!')
+  //   }
+  // })
   $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
-    const data = $(this).attr('data-target')
-    const parent = $(event.target).parent('div')
-    const card = $(this).attr('data-card')
-    parent.toggle()
-    $(data).show()
-    $(card).remove()
+    const data = $(this).attr('data-name')
+    const pickButton = '.' + data + '-pick-button'
+    const removeButton = '.' + data + '-remove-button'
+    const useButton = '.' + data + '-use-button'
+    const targetCard = $(this).attr('data-target')
+    $(targetCard).toggle()
+    $(pickButton).toggle()
+    $(removeButton).toggle()
+    $(useButton).toggle()
+    // $(data).show()
+    // $(card).remove()
     pokemonCount -= 1
     console.log(pokemonCount)
   })
