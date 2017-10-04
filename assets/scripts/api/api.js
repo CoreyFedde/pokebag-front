@@ -55,6 +55,7 @@ const onInspectPokemon = function (data) {
   $('#inspectPokemonModal').modal('show')
   getOnePokemon(data)
     .then((data) => {
+      console.log(data)
       // const targetCard = '#' + data.name + 'SelectorCard'
       const targetCard = '.' + data.name + '-selector-card'
       const inspectHTML = inspectPokemonTemplate({ pokemon: data })

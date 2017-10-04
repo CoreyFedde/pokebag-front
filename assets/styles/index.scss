@@ -106,8 +106,19 @@ body {
 }
 .pokemon-option-list li {
   display: inline-block;
-  margin-right: 5%;
+  margin: 0 2.5%;
 }
 .object-name {
   text-transform: capitalize;
+}
+.inspect-card {
+  text-align: center;
+}
+.inspect-options-list {
+  list-style: none;
+}
+.stats-ul {
+  list-style: none;
+  columns: 2;
+  border: double thin;
 }
