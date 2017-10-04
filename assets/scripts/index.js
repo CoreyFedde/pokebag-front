@@ -70,31 +70,31 @@ $(() => {
     $('#pokemonSelectionBoard').hide()
     $('#storeModal').modal('toggle')
   })
-  $('#inspectItemModal').on('hidden.bs.modal', function (e) {
-    const item = $('#inspectModalItem').text()
-    const targetCard = '.' + item + '-selector-card'
-    const classCheck = $(targetCard).hasClass('inspect')
-    console.log(item)
-    console.log(targetCard)
-    console.log(classCheck)
-    if (classCheck === true) {
-      $(targetCard).remove()
-    }
-    $('#inspectItemBoard').text('Loading...')
-  })
+  // $('#inspectItemModal').on('hidden.bs.modal', function (e) {
+  //   const item = $('#inspectModalItem').text()
+  //   const targetCard = '.' + item + '-selector-card'
+  //   const classCheck = $(targetCard).hasClass('inspect')
+  //   console.log(item)
+  //   console.log(targetCard)
+  //   console.log(classCheck)
+  //   if (classCheck === true) {
+  //     $(targetCard).remove()
+  //   }
+  //   $('#inspectItemBoard').text('Loading...')
+  // })
   $('#itemBoard').on('click', '#inspectItem', function (event) {
     const data = $(this).attr('data-name')
     api.onInspectItem(data)
   })
-  $('#inspectPokemonModal').on('hidden.bs.modal', function (e) {
-    const pokemon = $('#inspectModalPokemon').text()
-    const targetCard = '#' + pokemon + 'SelectorCard'
-    const classCheck = $(targetCard).hasClass('inspect')
-    if (classCheck === true) {
-      $(targetCard).remove()
-    }
-    $('#inspectPokemonBoard').text('Loading...')
-  })
+  // $('#inspectPokemonModal').on('hidden.bs.modal', function (e) {
+  //   const pokemon = $('#inspectModalPokemon').text()
+  //   const targetCard = '#' + pokemon + 'SelectorCard'
+  //   const classCheck = $(targetCard).hasClass('inspect')
+  //   if (classCheck === true) {
+  //     $(targetCard).remove()
+  //   }
+  //   $('#inspectPokemonBoard').text('Loading...')
+  // })
   $('#pokemonBoard').on('click', '#inspectPokemon', function (event) {
     // const parent = $(event.target).parent('div')
     // parent.css('background-color', 'red')

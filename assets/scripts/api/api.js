@@ -55,17 +55,16 @@ const onInspectPokemon = function (data) {
   $('#inspectPokemonModal').modal('show')
   getOnePokemon(data)
     .then((data) => {
-      console.log(data)
       // const targetCard = '#' + data.name + 'SelectorCard'
-      const targetCard = '.' + data.name + '-selector-card'
+      // const targetCard = '.' + data.name + '-selector-card'
       const inspectHTML = inspectPokemonTemplate({ pokemon: data })
       $('#inspectPokemonBoard').text('')
       $('#inspectPokemonBoard').append(inspectHTML)
-      const pokemonHTML = onePokemonTemplate({ pokemon: data })
-      $('.pokemon-selection-board').append(pokemonHTML)
-      $('.pokemon-view-board').append(pokemonHTML)
-      $(targetCard).hide()
-      $(targetCard).hasClass()
+      // const pokemonHTML = onePokemonTemplate({ pokemon: data })
+      // $('.pokemon-selection-board').append(pokemonHTML)
+      // $('.pokemon-view-board').append(pokemonHTML)
+      // $(targetCard).hide()
+      // $(targetCard).hasClass()
     })
     .catch((error) => console.log(error))
 }
@@ -82,14 +81,14 @@ const onInspectItem = function (data) {
   $('#inspectItemModal').modal('show')
   getOneItem(data)
     .then((data) => {
-      const targetCard = '.' + data.name + '-selector-card'
+      // const targetCard = '.' + data.name + '-selector-card'
       const inspectHTML = inspectItemTemplate({ item: data })
       $('#inspectItemBoard').text('')
       $('#inspectItemBoard').append(inspectHTML)
-      const itemHTML = oneItemTemplate({ item: data })
-      $('.item-selection-board').append(itemHTML)
-      $(targetCard).hide()
-      $(targetCard).hasClass()
+      // const itemHTML = oneItemTemplate({ item: data })
+      // $('.item-selection-board').append(itemHTML)
+      // $(targetCard).hide()
+      // $(targetCard).hasClass()
     })
     .catch((error) => console.log(error))
 }
