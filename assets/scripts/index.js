@@ -107,11 +107,13 @@ $(() => {
       const data = $(this).attr('data-name')
       const parent = '#' + data + 'Card'
       $(parent).toggle()
-      api.onGetOnePokemon(data)
+      // api.onGetOnePokemon(data)
       const targetCard = $(this).attr('data-target')
       const secondTarget = $(this).attr('data-second-target')
-      $(targetCard).removeClass('inspect')
-      $(secondTarget).hide()
+      console.log(secondTarget)
+      // $(targetCard).removeClass('inspect')
+      $(secondTarget).toggle()
+      // $(targetCard).show()
       pokemonCount += 1
       console.log(pokemonCount)
     } else {
@@ -146,13 +148,19 @@ $(() => {
   $('#itemBoard').on('click', '#pickItem', function (event) {
     if (itemCount < 10) {
       const data = $(this).attr('data-name')
-      const parent = '#' + data + 'Card'
-      $(parent).toggle()
-      api.onGetOneItem(data)
+      const pickButton = '.' + data + '-pick-button'
+      const removeButton = '.' + data + '-remove-button'
+      const useButton = '.' + data + '-use-button'
+      // const parent = '#' + data + 'Card'
+      // $(parent).toggle()
+      // api.onGetOneItem(data)
       const targetCard = $(this).attr('data-target')
-      const secondTarget = $(this).attr('data-second-target')
-      $(targetCard).removeClass('inspect')
-      $(secondTarget).hide()
+      // const secondTarget = $(this).attr('data-second-target')
+      // $(targetCard).removeClass('inspect')
+      $(targetCard).toggle()
+      $(pickButton).toggle()
+      $(removeButton).toggle()
+      $(useButton).toggle()
       itemCount += 1
       console.log(itemCount)
     } else {
