@@ -35,6 +35,18 @@ $(() => {
     $('#body').css('background-image', "url('https://i.imgur.com/dBgzE6u.jpg')")
   })
   // Store options
+  $('#viewPokemonStore').on('click', function () {
+    $('#pokemonBoard').show()
+    $('#pokemonSelectionBoard').show()
+    $('#itemBoard').hide()
+    $('#itemSelectionBoard').hide()
+  })
+  $('#viewItemStore').on('click', function () {
+    $('#itemBoard').show()
+    $('#itemSelectionBoard').show()
+    $('#pokemonBoard').hide()
+    $('#pokemonSelectionBoard').hide()
+  })
   $('#storeShow').on('click', function () {
     $('#storeView').show()
     $('#location').text('Store')
