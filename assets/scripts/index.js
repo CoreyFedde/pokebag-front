@@ -108,6 +108,10 @@ $(() => {
       parent.toggle()
       const data = $(this).attr('data-name')
       api.onGetOnePokemon(data)
+      const targetCard = $(this).attr('data-target')
+      const secondTarget = $(this).attr('data-second-target')
+      $(targetCard).removeClass('inspect')
+      $(secondTarget).hide()
       pokemonCount += 1
       console.log(pokemonCount)
     } else {
@@ -145,6 +149,10 @@ $(() => {
       parent.toggle()
       const data = $(this).attr('data-name')
       api.onGetOneItem(data)
+      const targetCard = $(this).attr('data-target')
+      const secondTarget = $(this).attr('data-second-target')
+      $(targetCard).removeClass('inspect')
+      $(secondTarget).hide()
       itemCount += 1
       console.log(itemCount)
     } else {
@@ -154,6 +162,7 @@ $(() => {
   $('#inspectItemBoard').on('click', '#addItem', function (event) {
     if (itemCount < 10) {
       const targetCard = $(this).attr('data-target')
+      console.log(targetCard)
       const secondTarget = $(this).attr('data-second-target')
       $(targetCard).show()
       $(targetCard).removeClass('inspect')
@@ -184,7 +193,7 @@ $(() => {
     $('#storeView').hide()
     $('#itemView').hide()
     $('#menu').hide()
-    $('#body').css('background-image', "none")
+    $('#body').css('background-image', 'none')
   })
 
   // Item view options
