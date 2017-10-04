@@ -101,3 +101,13 @@ body {
   left: 0;
   z-index: 1;
 }
+.pokemon-option-list {
+  list-style: none;
+}
+.pokemon-option-list li {
+  display: inline-block;
+  margin-right: 5%;
+}
+.object-name {
+  text-transform: capitalize;
+}
