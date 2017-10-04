@@ -127,4 +127,11 @@ ul {
 }
 .pokemon-view-board .pokemon-card {
   border: double;
+  display: none;
+}
+.pokemon-selection-board .pokemon-card {
+  display: none;
+}
+.item-selection-board .item-card {
+  display: none;
 }

@@ -39,7 +39,9 @@ const onGetAllPokemon = function (event) {
   getAllPokemon()
     .then((data) => {
       const pokemonHTML = pokemonTemplate({ pokemons: data.results })
-      $('#pokemonBoard').prepend(pokemonHTML)
+      $('#pokemonBoard').append(pokemonHTML)
+      $('.pokemon-selection-board').append(pokemonHTML)
+      $('.pokemon-view-board').append(pokemonHTML)
     })
     .catch((error) => console.log(error))
 }
@@ -48,6 +50,7 @@ const onGetAllItems = function (event) {
     .then((data) => {
       const itemHTML = itemTemplate({ items: data.results })
       $('#itemBoard').prepend(itemHTML)
+      $('.item-selection-board').append(itemHTML)
     })
     .catch((error) => console.log(error))
 }
