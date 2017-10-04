@@ -1,5 +1,5 @@
 'use strict'
-const api = require('./api/api.js')
+const api = require('./api/events.js')
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 
@@ -320,7 +320,6 @@ $(() => {
   })
   $('#useItemModal').on('hidden.bs.modal', function (e) {
   })
-
 
   $('.item-view-board').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-name')
