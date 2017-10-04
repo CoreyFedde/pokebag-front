@@ -271,6 +271,34 @@ $(() => {
     const data = $(this).attr('data-name')
     api.onInspectItem(data)
   })
+  $('.item-view-board').on('click', '#inspectItem', function (event) {
+    const data = $(this).attr('data-name')
+    api.onInspectItem(data)
+  })
+  $('.item-view-board').on('click', '#removeItem', function (event) {
+    const data = $(this).attr('data-name')
+    const pickButton = '.' + data + '-pick-button'
+    const removeButton = '.' + data + '-remove-button'
+    const useButton = '.' + data + '-use-button'
+    // const parent = '#' + data + 'Card'
+    // $(parent).toggle()
+    // api.onGetOneItem(data)
+    const targetCard = $(this).attr('data-target')
+    // const secondTarget = $(this).attr('data-second-target')
+    // $(targetCard).removeClass('inspect')
+    $(targetCard).toggle()
+    $(pickButton).toggle()
+    $(removeButton).toggle()
+    $(useButton).toggle()
+    // const data = $(this).attr('data-target')
+    // const parent = $(event.target).parent('div')
+    // const card = $(this).attr('data-card')
+    // parent.toggle()
+    // $(card).remove()
+    // $(data).show()
+    itemCount -= 1
+    console.log(itemCount)
+  })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')
   // })

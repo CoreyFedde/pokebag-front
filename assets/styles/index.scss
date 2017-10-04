@@ -135,6 +135,15 @@ ul {
 .item-selection-board .item-card {
   display: none;
 }
+.item-view-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.item-view-board .item-card {
+  display: none;
+}
 .remove-button {
   display: none;
 }

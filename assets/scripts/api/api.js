@@ -51,6 +51,7 @@ const onGetAllItems = function (event) {
       const itemHTML = itemTemplate({ items: data.results })
       $('#itemBoard').append(itemHTML)
       $('.item-selection-board').append(itemHTML)
+      $('.item-view-board').append(itemHTML)
     })
     .catch((error) => console.log(error))
 }
