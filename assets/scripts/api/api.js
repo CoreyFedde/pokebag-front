@@ -11,7 +11,7 @@ const rareTemplate = require('../templates/show-rare-candy.handlebars')
 
 const getAllPokemon = function () {
   return $.ajax({
-    url: config.apiOrigin + '/pokemon/?limit=811',
+    url: config.apiOrigin + '/generation/1/',
     method: 'GET'
   })
 }
@@ -45,7 +45,8 @@ const findPokemonEvolution = function (data) {
 const onGetAllPokemon = function (event) {
   getAllPokemon()
     .then((data) => {
-      const pokemonHTML = pokemonTemplate({ pokemons: data.results })
+      console.log(data.pokemon_species)
+      const pokemonHTML = pokemonTemplate({ pokemons: data.pokemon_species })
       $('#pokemonBoard').append(pokemonHTML)
       $('.pokemon-selection-board').append(pokemonHTML)
       $('.pokemon-view-board').append(pokemonHTML)
