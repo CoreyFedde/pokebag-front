@@ -35,6 +35,13 @@ const getOneItem = function (data) {
   })
 }
 
+const findPokemonEvolution = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/evolution-chain/' + data,
+    method: 'GET'
+  })
+}
+
 const onGetAllPokemon = function (event) {
   getAllPokemon()
     .then((data) => {
@@ -72,12 +79,45 @@ const onInspectPokemon = function (data) {
     })
     .catch((error) => console.log(error))
 }
+const onFindPokemonEvolution = function (data) {
+  findPokemonEvolution(data)
+    .then((data) => {
+      const name = data.chain.evolves_to[0].species.name
+      const pickButton = '.' + name + '-pick-button'
+      const removeButton = '.' + name + '-remove-button'
+      const useButton = '.' + name + '-use-button'
+      const targetCard = '.' + name + '-card'
+      // $(parent).toggle()
+      // api.onGetOneItem(data)
+      // const targetCard = $(this).attr('data-target')
+      if ($(targetCard).hasClass('selected') === true) {
+        console.log('You already have the evolved form. Try another pokemon!')
+      } else {
+      // const secondTarget = $(this).attr('data-second-target')
+      // $(targetCard).removeClass('inspect')
+      $(targetCard).toggle()
+      $(pickButton).toggle()
+      $(removeButton).toggle()
+      $(useButton).toggle()
+      console.log('Your pokemon has evolved into: ', name)
+      $('#useItemModal').modal('hide')
+    }
+    })
+}
+const onGetOnePokemonId = function (data) {
+  getOnePokemon(data)
+    .then((data) => {
+      onFindPokemonEvolution(data.id)
+      console.log(data)
+      console.log(data.id)
+    })
+    .catch((error) => console.log(error))
+}
 const onGetOnePokemon = function (data) {
   getOnePokemon(data)
     .then((data) => {
-      const pokemonHTML = onePokemonTemplate({ pokemon: data })
-      $('.pokemon-selection-board').append(pokemonHTML)
-      $('.pokemon-view-board').append(pokemonHTML)
+      const itemHTML = oneItemTemplate({ item: data })
+      $('.pokemon-selection-board').append(itemHTML)
     })
     .catch((error) => console.log(error))
 }
@@ -124,5 +164,6 @@ module.exports = {
   onGetOneItem,
   onInspectPokemon,
   onInspectItem,
-  onGetRareCandy
+  onGetRareCandy,
+  onGetOnePokemonId
 }

@@ -118,6 +118,7 @@ $(() => {
       // $(secondTarget).toggle()
       // $(targetCard).show()
       $(targetCard).toggle()
+      $(targetCard).addClass('selected')
       $(pickButton).toggle()
       $(removeButton).toggle()
       $(useButton).toggle()
@@ -148,6 +149,7 @@ $(() => {
     const useButton = '.' + data + '-use-button'
     const targetCard = $(this).attr('data-target')
     $(targetCard).toggle()
+    $(targetCard).removeClass('selected')
     $(pickButton).toggle()
     $(removeButton).toggle()
     $(useButton).toggle()
@@ -218,6 +220,9 @@ $(() => {
     itemCount -= 1
     console.log(itemCount)
   })
+  $('.item-selection-board').on('click', '#useItem', function (event) {
+    console.log('Navigate to "Items" to use items!')
+  })
 
   // Pokemon view options
   $('#pokemonShow').on('click', function () {
@@ -248,6 +253,7 @@ $(() => {
     const useButton = '.' + data + '-use-button'
     const targetCard = $(this).attr('data-target')
     $(targetCard).toggle()
+    $(targetCard).removeClass('selected')
     $(pickButton).toggle()
     $(removeButton).toggle()
     $(useButton).toggle()
@@ -274,6 +280,40 @@ $(() => {
   $('.item-view-board').on('click', '#inspectItem', function (event) {
     const data = $(this).attr('data-name')
     api.onInspectItem(data)
+  })
+  $('.item-view-board').on('click', '#useItem', function (event) {
+    const data = $(this).attr('data-name')
+    const pokeArray = []
+    if (data === 'rare-candy') {
+      $('#useItemModal').modal('show')
+      $('.selected').each(function () {
+        const pokemonName = $(this).attr('data-name')
+        if (pokeArray.indexOf(pokemonName) === -1) {
+          pokeArray.push(pokemonName)
+          $('#useItemBoard ul').append(`<li class="pokemon-use-list" data-name="${pokemonName}"><h3>${pokemonName}</h3><li>`)
+        }
+      })
+      // pokeArray.sort()
+      // let pokeHolder = ''
+      // for (let i = 0; i < pokeArray.length; i++) {
+      //   console.log('pokeholder start: ', pokeHolder)
+      //   if (pokeArray[i] === pokeHolder) {
+      //     pokeArray.shift()
+      //     console.log('match')
+      //     console.log('popped array: ', pokeArray)
+      //   }
+      //   pokeHolder = pokeArray[i]
+      //   console.log('pokeHolder: ', pokeHolder)
+      // }
+      // console.log('new array: ', pokeArray)
+      // $('#useItemBoard ul').append(`<li>${pokemonName}<li>`)
+    } else {
+      console.log('It is not time to use that item right now')
+    }
+  })
+  $('#useItemBoard').on('click', '.pokemon-use-list', function () {
+    let data = $(this).attr('data-name')
+    api.onGetOnePokemonId(data)
   })
   $('.item-view-board').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-name')
