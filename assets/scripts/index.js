@@ -104,9 +104,9 @@ $(() => {
 
   $('#pokemonBoard').on('click', '#pickPokemon', function (event) {
     if (pokemonCount < 6) {
-      const parent = $(event.target).parent('div')
-      parent.toggle()
       const data = $(this).attr('data-name')
+      const parent = '#' + data + 'Card'
+      $(parent).toggle()
       api.onGetOnePokemon(data)
       const targetCard = $(this).attr('data-target')
       const secondTarget = $(this).attr('data-second-target')
@@ -145,9 +145,9 @@ $(() => {
 
   $('#itemBoard').on('click', '#pickItem', function (event) {
     if (itemCount < 10) {
-      const parent = $(event.target).parent('div')
-      parent.toggle()
       const data = $(this).attr('data-name')
+      const parent = '#' + data + 'Card'
+      $(parent).toggle()
       api.onGetOneItem(data)
       const targetCard = $(this).attr('data-target')
       const secondTarget = $(this).attr('data-second-target')
