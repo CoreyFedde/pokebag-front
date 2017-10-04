@@ -9,7 +9,7 @@ $(() => {
   setAPIOrigin(location, config)
   api.onGetAllItems()
   api.onGetAllPokemon()
-  api.onGetRareCandy()
+  // api.onGetRareCandy()
   // $('#bodyText').on('click', api.onGetAllItems)
   // $('#bodyText').on('click', api.onGetAllPokemon)
   $('#menu').hide()
@@ -194,7 +194,7 @@ $(() => {
   //     console.log('max number of items reached!')
   //   }
   // })
-  $('#itemSelectionBoard').on('click', '#removeItem', function (event) {
+  $('.item-selection-board').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-name')
     const pickButton = '.' + data + '-pick-button'
     const removeButton = '.' + data + '-remove-button'
@@ -229,6 +229,33 @@ $(() => {
     $('#menu').hide()
     $('#body').css('background-image', 'none')
   })
+  $('.pokemon-view-board').on('click', '#inspectPokemon', function (event) {
+    // const parent = $(event.target).parent('div')
+    // parent.css('background-color', 'red')
+    const data = $(this).attr('data-name')
+    api.onInspectPokemon(data)
+  })
+  $('.pokemon-selection-board').on('click', '#inspectPokemon', function (event) {
+    // const parent = $(event.target).parent('div')
+    // parent.css('background-color', 'red')
+    const data = $(this).attr('data-name')
+    api.onInspectPokemon(data)
+  })
+  $('.pokemon-view-board').on('click', '#removePokemon', function (event) {
+    const data = $(this).attr('data-name')
+    const pickButton = '.' + data + '-pick-button'
+    const removeButton = '.' + data + '-remove-button'
+    const useButton = '.' + data + '-use-button'
+    const targetCard = $(this).attr('data-target')
+    $(targetCard).toggle()
+    $(pickButton).toggle()
+    $(removeButton).toggle()
+    $(useButton).toggle()
+    // $(data).show()
+    // $(card).remove()
+    pokemonCount -= 1
+    console.log(pokemonCount)
+  })
 
   // Item view options
   $('#itemShow').on('click', function () {
@@ -239,6 +266,10 @@ $(() => {
     $('#storeView').hide()
     $('#menu').hide()
     $('#body').css('background-image', "url('https://i.imgur.com/4yT1BIZ.png')")
+  })
+  $('.item-selection-board').on('click', '#inspectItem', function (event) {
+    const data = $(this).attr('data-name')
+    api.onInspectItem(data)
   })
   // $('#pokemonSelector').on('click', function (event) {
   //   $(event.target).css('border', 'green')

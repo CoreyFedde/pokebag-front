@@ -49,7 +49,7 @@ const onGetAllItems = function (event) {
   getAllItems()
     .then((data) => {
       const itemHTML = itemTemplate({ items: data.results })
-      $('#itemBoard').prepend(itemHTML)
+      $('#itemBoard').append(itemHTML)
       $('.item-selection-board').append(itemHTML)
     })
     .catch((error) => console.log(error))
