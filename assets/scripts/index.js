@@ -288,9 +288,10 @@ $(() => {
       $('#useItemModal').modal('show')
       $('.selected').each(function () {
         const pokemonName = $(this).attr('data-name')
+        const pokemonUrl = $(this).attr('data-url')
         if (pokeArray.indexOf(pokemonName) === -1) {
           pokeArray.push(pokemonName)
-          $('#useItemBoard ul').append(`<li class="pokemon-use-list" data-name="${pokemonName}"><h3>${pokemonName}</h3><li>`)
+          $('#useItemBoard ul').append(`<li class="${pokemonName}-evolve-card pokemon-use-list" data-name="${pokemonName}" data-url="${pokemonUrl}"><h3>${pokemonName}</h3><li>`)
         }
       })
       // pokeArray.sort()
@@ -312,9 +313,15 @@ $(() => {
     }
   })
   $('#useItemBoard').on('click', '.pokemon-use-list', function () {
-    let data = $(this).attr('data-name')
-    api.onGetOnePokemonId(data)
+    let data = $(this).attr('data-url')
+    let targetCard = "." + $(this).attr('data-name') + "-card"
+    $(targetCard).addClass('evolve')
+    api.onGetOnePokemonEvolution(data)
   })
+  $('#useItemModal').on('hidden.bs.modal', function (e) {
+  })
+
+
   $('.item-view-board').on('click', '#removeItem', function (event) {
     const data = $(this).attr('data-name')
     const pickButton = '.' + data + '-pick-button'

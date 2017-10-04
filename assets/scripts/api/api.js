@@ -22,6 +22,13 @@ const getOnePokemon = function (data) {
   })
 }
 
+const getOnePokemonEvolution = function (data) {
+  return $.ajax({
+    url: data,
+    method: 'GET'
+  })
+}
+
 const getAllItems = function () {
   return $.ajax({
     url: config.apiOrigin + '/item/?limit=746',
@@ -80,6 +87,47 @@ const onInspectPokemon = function (data) {
     })
     .catch((error) => console.log(error))
 }
+
+const onGetOnePokemonEvolutionChain = function (data) {
+  getOnePokemonEvolution(data)
+    .then((data) => {
+      console.log(data)
+      const original = data.chain.species.name
+      const firstEvolution = data.chain.evolves_to[0].species.name
+      const secondEvolution = data.chain.evolves_to[0].evolves_to[0].species.name
+      const originalCard = '.' + original + '-card'
+      const firstEvoCard = '.' + firstEvolution + '-card'
+      const secondEvoCard = '.' + secondEvolution + '-card'
+      if ($(originalCard).hasClass('evolve') === true) {
+        if ($(firstEvoCard).hasClass('selected') === true) {
+          console.log('You already have the evolved form. Try another pokemon!')
+        } else {
+          console.log(firstEvolution)
+        }
+        $(originalCard).removeClass('evolve')
+      } else if ($(firstEvoCard).hasClass('evolve') === true) {
+        if ($(secondEvoCard).hasClass('selected') === true) {
+          console.log('You already have the evolved form. Try another pokemon!')
+        } else {
+          console.log(secondEvolution)
+        }
+        $(firstEvoCard).removeClass('evolve')
+      } else if ($(secondEvoCard).hasClass('evolve') === true) {
+        console.log('cannot be evolved')
+        $(secondEvoCard).removeClass('evolve')
+      }
+      $('#useItemModal').modal('hide')
+    })
+}
+
+const onGetOnePokemonEvolution = function (data) {
+  getOnePokemonEvolution(data)
+    .then((data) => {
+      const url = data.evolution_chain.url
+      onGetOnePokemonEvolutionChain(url)
+    })
+}
+
 const onFindPokemonEvolution = function (data) {
   findPokemonEvolution(data)
     .then((data) => {
@@ -166,5 +214,6 @@ module.exports = {
   onInspectPokemon,
   onInspectItem,
   onGetRareCandy,
-  onGetOnePokemonId
+  onGetOnePokemonId,
+  onGetOnePokemonEvolution
 }
