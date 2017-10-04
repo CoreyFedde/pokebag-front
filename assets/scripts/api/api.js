@@ -63,6 +63,7 @@ const onInspectPokemon = function (data) {
       $('#inspectPokemonBoard').append(inspectHTML)
       const pokemonHTML = onePokemonTemplate({ pokemon: data })
       $('.pokemon-selection-board').append(pokemonHTML)
+      $('.pokemon-view-board').append(pokemonHTML)
       $(targetCard).hide()
       $(targetCard).hasClass()
     })
@@ -73,6 +74,7 @@ const onGetOnePokemon = function (data) {
     .then((data) => {
       const pokemonHTML = onePokemonTemplate({ pokemon: data })
       $('.pokemon-selection-board').append(pokemonHTML)
+      $('.pokemon-view-board').append(pokemonHTML)
     })
     .catch((error) => console.log(error))
 }
