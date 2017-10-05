@@ -26,7 +26,6 @@ const setUseItem = function (event) {
   const pokeArray = []
   $('#useItemBoard ul').empty()
   if (data === 'rare-candy') {
-    $('#useItemModal').modal('show')
     $('.selected').each(function () {
       const pokemonName = $(this).attr('data-name')
       const pokemonUrl = $(this).attr('data-url')

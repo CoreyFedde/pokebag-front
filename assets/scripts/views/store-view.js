@@ -18,7 +18,7 @@ const setItemStoreView = function () {
 }
 
 const setStoreView = function () {
-  $('.text-box').text('Welcome to the store. Take your time...')
+  $('.text-box').text('Welcome to the store. Choose to see Pokemon or Items.')
   $('#storeView').show()
   $('#location').text('Store')
   $('#pokemonView').hide()
