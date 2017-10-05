@@ -90,7 +90,7 @@ $(() => {
       pokemonCount += 1
       $('.text-box').text(`You have chosen ${pokemonCount}/6 pokemon so far!`)
     } else {
-      console.log('max number of pokemon reached!')
+      $('.text-box').text('max number of pokemon reached!')
     }
   })
   $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
@@ -105,7 +105,7 @@ $(() => {
       itemCount += 1
       $('.text-box').text(`You have chosen ${itemCount}/10 pokemon so far!`)
     } else {
-      console.log('max number of items reached!')
+      $('.text-box').text('max number of items reached!')
     }
   })
   $('.item-selection-board').on('click', '#removeItem', function (event) {
@@ -114,7 +114,7 @@ $(() => {
     $('.text-box').text(`You have chosen ${itemCount}/10 pokemon so far!`)
   })
   $('.item-selection-board').on('click', '#useItem', function (event) {
-    console.log('Navigate to "Items" to use items!')
+    $('.text-box').text('Navigate to "Items" to use items!')
   })
 
   // Pokemon view options
