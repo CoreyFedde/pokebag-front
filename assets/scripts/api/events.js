@@ -6,39 +6,39 @@ const ui = require('./ui.js')
 const onGetAllPokemon = function (event) {
   api.getAllPokemon()
     .then(ui.getAllPokemonSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 const onGetAllItems = function (event) {
   api.getAllItems()
     .then(ui.getAllItemsSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 const onInspectPokemon = function (data) {
   $('#inspectPokemonModal').modal('show')
   api.getOnePokemon(data)
     .then(ui.inspectPokemonSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 const onGetOnePokemon = function (data) {
   api.getOnePokemon(data)
     .then(ui.getOneItemSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 const onInspectItem = function (data) {
   $('#inspectItemModal').modal('show')
   api.getOneItem(data)
     .then(ui.inspectItemSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 const onGetOneItem = function (data) {
   api.getOneItem(data)
     .then(ui.getOneItemSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 const onGetOnePokemonEvolutionChain = function (data) {
   api.getOnePokemonEvolution(data)
     .then(ui.getPokemonEvolutionChainSuccess)
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 
 const onGetOnePokemonEvolution = function (data) {
@@ -47,7 +47,7 @@ const onGetOnePokemonEvolution = function (data) {
       const url = data.evolution_chain.url
       onGetOnePokemonEvolutionChain(url)
     })
-    .catch((error) => console.log(error))
+    .catch(ui.productionError)
 }
 
 module.exports = {

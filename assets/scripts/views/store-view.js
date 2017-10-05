@@ -25,7 +25,7 @@ const setStoreView = function () {
   $('#itemView').hide()
   $('#menu').hide()
   $('#body').css('background-image', "url('https://i.imgur.com/jnOhaDG.jpg')")
-  $('#storeModal').modal('toggle')
+  // $('#storeModal').modal('toggle')
 }
 
 const modalSetPokemonStoreView = function () {

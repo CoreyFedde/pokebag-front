@@ -124,6 +124,10 @@ body {
 ul {
   list-style: none;
 }
+.pokemon-view-board {
+  max-height: 500px;
+  overflow: scroll;
+}
 .pokemon-view-board .pokemon-card {
   border: double;
   display: none;

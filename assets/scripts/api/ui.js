@@ -7,7 +7,6 @@ const itemTemplate = require('../templates/show-all-items.handlebars')
 const oneItemTemplate = require('../templates/show-one-item.handlebars')
 
 const getAllPokemonSuccess = (data) => {
-  console.log(data.pokemon_species)
   const pokemonHTML = pokemonTemplate({ pokemons: data.pokemon_species })
   $('#pokemonBoard').append(pokemonHTML)
   $('.pokemon-selection-board').append(pokemonHTML)
@@ -50,15 +49,33 @@ const getPokemonEvolutionChainSuccess = (data) => {
   const firstEvolution = data.chain.evolves_to[0].species.name
   const secondEvolution = data.chain.evolves_to[0].evolves_to[0].species.name
   const originalCard = '.' + original + '-card'
+  const originalPickButton = '.' + original + '-pick-button'
+  const originalRemoveButton = '.' + original + '-remove-button'
+  const originalUseButton = '.' + original + '-use-button'
   const firstEvoCard = '.' + firstEvolution + '-card'
+  const firstPickButton = '.' + firstEvolution + '-pick-button'
+  const firstRemoveButton = '.' + firstEvolution + '-remove-button'
+  const firstUseButton = '.' + firstEvolution + '-use-button'
   const secondEvoCard = '.' + secondEvolution + '-card'
+  const secondPickButton = '.' + secondEvolution + '-pick-button'
+  const secondRemoveButton = '.' + secondEvolution + '-remove-button'
+  const secondUseButton = '.' + secondEvolution + '-use-button'
   if ($(originalCard).hasClass('evolve') === true) {
     if ($(firstEvoCard).hasClass('selected') === true) {
       $('.text-box').text('You already have the evolved form. Try another pokemon!')
     } else {
       $(originalCard).toggle()
+      $(originalCard).removeClass('selected')
+      $(originalCard).removeClass('evolve')
+      $(originalPickButton).toggle()
+      $(originalRemoveButton).toggle()
+      $(originalUseButton).toggle()
       $(firstEvoCard).toggle()
-      $('.text-box').text(firstEvolution)
+      $(firstEvoCard).addClass('selected')
+      $(firstPickButton).toggle()
+      $(firstRemoveButton).toggle()
+      $(firstUseButton).toggle()
+      $('.text-box').text(`Your pokemon evolved into ${firstEvolution}`)
     }
     $(originalCard).removeClass('evolve')
   } else if ($(firstEvoCard).hasClass('evolve') === true) {
@@ -66,8 +83,17 @@ const getPokemonEvolutionChainSuccess = (data) => {
       $('.text-box').text('You already have the evolved form. Try another pokemon!')
     } else {
       $(secondEvoCard).toggle()
+      $(secondEvoCard).addClass('selected')
+      $(secondPickButton).toggle()
+      $(secondRemoveButton).toggle()
+      $(secondUseButton).toggle()
       $(firstEvoCard).toggle()
-      $('.text-box').text(secondEvolution)
+      $(firstEvoCard).removeClass('selected')
+      $(firstEvoCard).removeClass('evolve')
+      $(firstPickButton).toggle()
+      $(firstRemoveButton).toggle()
+      $(firstUseButton).toggle()
+      $('.text-box').text(`Your pokemon evolved into ${secondEvolution}`)
     }
     $(firstEvoCard).removeClass('evolve')
   } else if ($(secondEvoCard).hasClass('evolve') === true) {
