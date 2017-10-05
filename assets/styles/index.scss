@@ -1,2 +1,158 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background: url("https://i.imgur.com/dBgzE6u.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+.modal-body {
+  border: double thick;
+}
+.menu-button {
+  // top: 0;
+  // right: 0;
+  // position: absolute;
+  // width: 200px;
+  // padding: 20px;
+  // margin-right: 5%;
+  background-color: white;
+}
+.header {
+  background-color: white;
+  border: double thick;
+}
+.item-selection-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.pokemon-selection-board {
+  background-color: white;
+  border: double thick;
+  max-height: 300px;
+  overflow: scroll;
+}
+.item-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.pokemon-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.store-text {
+  background-color: white;
+  border: double thick;
+}
+.menu {
+    height: 80%;
+    // width: 40%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border: double thick;
+}
+
+.menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+// .pokemon-card {
+//   background-color: white;
+//   border: thin solid black;
+// }
+//
+// .item-card {
+//   background-color: white;
+//   border: thin solid black;
+// };
+
+.text-box {
+  background-color: white;
+  border: double thick;
+  height: 20%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 30px;
+}
+.pokemon-option-list {
+  list-style: none;
+}
+.pokemon-option-list li {
+  display: inline-block;
+  margin: 0 2.5%;
+}
+.object-name {
+  text-transform: capitalize;
+}
+.inspect-card {
+  text-align: center;
+}
+.inspect-options-list {
+  list-style: none;
+}
+.stats-ul {
+  list-style: none;
+  columns: 2;
+  border: double thin;
+}
+ul {
+  list-style: none;
+}
+.pokemon-view-board {
+  max-height: 500px;
+  overflow: scroll;
+}
+.pokemon-view-board .pokemon-card {
+  border: double;
+  display: none;
+}
+.pokemon-selection-board .pokemon-card {
+  display: none;
+}
+.item-selection-board .item-card {
+  display: none;
+}
+.item-view-board {
+  background-color: white;
+  border: double thick;
+  max-height: 500px;
+  overflow: scroll;
+}
+.item-view-board .item-card {
+  display: none;
+}
+.remove-button {
+  display: none;
+}
+.use-button {
+  display: none;
+}
+.option {
+  cursor: pointer;
+}

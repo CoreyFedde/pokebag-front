@@ -7,7 +7,7 @@ const clone = require('clone')
 const webpackConfig = clone(require('./webpack').options)
 
 // port for development server
-const port = +('GA'.split('').reduce((p, c) => p + c.charCodeAt(), ''))
+const port = 8000
 
 // make `jQuery` and `$` available in the development console
 webpackConfig.module.rules.push({
