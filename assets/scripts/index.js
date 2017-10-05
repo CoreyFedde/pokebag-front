@@ -63,6 +63,7 @@ $(() => {
   store.addHandlers()
   pokemon.addHandlers()
   item.addHandlers()
+  $('.text-box').hide()
   $('#menu').hide()
   $('#storeView').hide()
   $('#pokemonBoard').hide()
@@ -74,6 +75,7 @@ $(() => {
     if (pokemonCount < 6) {
       selectPokemon(this)
       pokemonCount += 1
+      $('.text-box').text(`You have chosen ${pokemonCount}/6 pokemon so far!`)
     } else {
       console.log('max number of pokemon reached!')
     }
@@ -81,12 +83,14 @@ $(() => {
   $('#pokemonSelectionBoard').on('click', '#removePokemon', function (event) {
     removePokemon(this)
     pokemonCount -= 1
+    $('.text-box').text(`You have chosen ${pokemonCount}/6 pokemon so far!`)
   })
 
   $('#itemBoard').on('click', '#pickItem', function (event) {
     if (itemCount < 10) {
       selectItem(this)
       itemCount += 1
+      $('.text-box').text(`You have chosen ${itemCount}/10 pokemon so far!`)
     } else {
       console.log('max number of items reached!')
     }
@@ -94,6 +98,7 @@ $(() => {
   $('.item-selection-board').on('click', '#removeItem', function (event) {
     removeItem(this)
     itemCount -= 1
+    $('.text-box').text(`You have chosen ${itemCount}/10 pokemon so far!`)
   })
   $('.item-selection-board').on('click', '#useItem', function (event) {
     console.log('Navigate to "Items" to use items!')

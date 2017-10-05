@@ -2,6 +2,7 @@
 const api = require('.././api/events.js')
 
 const setPokemonView = function () {
+  $('.text-box').text('Take a look at your Pokemon team! Change your team in the store if you want.')
   $('#location').text('Pokemon')
   $('#pokemonView').show()
   $('#pokemonSelect').show()

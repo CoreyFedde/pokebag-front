@@ -93,13 +93,12 @@ body {
 
 .text-box {
   background-color: white;
-  border: thin solid black;
-  height: 200px;
-  width: 100%;
+  border: double thick;
+  height: 20%;
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  font-size: 30px;
 }
 .pokemon-option-list {
   list-style: none;

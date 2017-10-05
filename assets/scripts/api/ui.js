@@ -70,27 +70,27 @@ const getPokemonEvolutionChainSuccess = (data) => {
   const secondEvoCard = '.' + secondEvolution + '-card'
   if ($(originalCard).hasClass('evolve') === true) {
     if ($(firstEvoCard).hasClass('selected') === true) {
-      console.log('You already have the evolved form. Try another pokemon!')
+      $('.text-box').text('You already have the evolved form. Try another pokemon!')
     } else {
-      console.log(firstEvolution)
+      $('.text-box').text(firstEvolution)
     }
     $(originalCard).removeClass('evolve')
   } else if ($(firstEvoCard).hasClass('evolve') === true) {
     if ($(secondEvoCard).hasClass('selected') === true) {
-      console.log('You already have the evolved form. Try another pokemon!')
+      $('.text-box').text('You already have the evolved form. Try another pokemon!')
     } else {
-      console.log(secondEvolution)
+      $('.text-box').text(secondEvolution)
     }
     $(firstEvoCard).removeClass('evolve')
   } else if ($(secondEvoCard).hasClass('evolve') === true) {
-    console.log('cannot be evolved')
+    $('.text-box').text('That pokemon cannot be evolved')
     $(secondEvoCard).removeClass('evolve')
   }
   $('#useItemModal').modal('hide')
 }
 
 const productionError = (data) => {
-  console.log('There was an error! Please try again!')
+  $('.text-box').text('There was an error! Please try again!')
 }
 
 module.exports = {

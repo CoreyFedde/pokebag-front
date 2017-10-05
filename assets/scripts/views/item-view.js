@@ -2,6 +2,7 @@
 const api = require('.././api/events.js')
 
 const setItemView = function () {
+  $('.text-box').text('Look at your items. I bet you could use a rare-candy! Change your invetory in the store')
   $('#location').text('Items')
   $('#itemView').show()
   $('#itemSelect').show()
@@ -15,8 +16,8 @@ const inspectItem = function (event) {
   api.onInspectItem(data)
 }
 const selectUseItem = function () {
-  let data = $(this).attr('data-url')
-  let targetCard = "." + $(this).attr('data-name') + "-card"
+  const data = $(this).attr('data-url')
+  const targetCard = '.' + $(this).attr('data-name') + '-card'
   $(targetCard).addClass('evolve')
   api.onGetOnePokemonEvolution(data)
 }
@@ -35,7 +36,7 @@ const setUseItem = function (event) {
       }
     })
   } else {
-    console.log('It is not time to use that item right now')
+    $('.text-box').text('It is not time to use that item right now')
   }
 }
 // Item view options

@@ -2,6 +2,7 @@
 const api = require('.././api/events.js')
 
 const setPokemonStoreView = function () {
+  $('.text-box').text('Remember: You can only take 6 pokemon with you!')
   $('#pokemonBoard').show()
   $('#pokemonSelectionBoard').show()
   $('#itemBoard').hide()
@@ -9,6 +10,7 @@ const setPokemonStoreView = function () {
 }
 
 const setItemStoreView = function () {
+  $('.text-box').text('Remember: You can only take 10 items total! That rare-candy looks good...')
   $('#itemBoard').show()
   $('#itemSelectionBoard').show()
   $('#pokemonBoard').hide()
@@ -16,6 +18,7 @@ const setItemStoreView = function () {
 }
 
 const setStoreView = function () {
+  $('.text-box').text('Welcome to the store. Take your time...')
   $('#storeView').show()
   $('#location').text('Store')
   $('#pokemonView').hide()
@@ -50,7 +53,7 @@ const inspectPokemon = function (event) {
   api.onInspectPokemon(data)
 }
 const useStoreItem = function (event) {
-  console.log('Navigate to "Items" to use items!')
+  $('.text-box').text('Navigate to "Items" to use items!')
 }
 // Store options
 $('#viewPokemonStore').on('click', setPokemonStoreView)
