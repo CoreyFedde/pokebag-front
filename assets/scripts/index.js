@@ -7,14 +7,26 @@ const home = require('./views/home-view.js')
 const pokemon = require('./views/pokemon-view.js')
 const item = require('./views/item-view.js')
 
+// function for selecting Pokemon
 const selectPokemon = function (data) {
+  // Grabs the name of the pokemon selected via an attribute in the templates
+  // name data-name
   const name = $(data).attr('data-name')
+  // This function uses the name of the pokmon to get the specific class
+  // Classes were used because there are multiple cards being made, so IDs would
+  // not be unique
   const pickButton = '.' + name + '-pick-button'
   const removeButton = '.' + name + '-remove-button'
   const useButton = '.' + name + '-use-button'
+  // The data target is the specific card wanted
   const targetCard = $(data).attr('data-target')
+  // By toggling the card, any cards already shown will be hidden, and hidden
+  // cards will be shown
   $(targetCard).toggle()
+  // Add class "selected" to shown cards so other functions know this pokemon is
+  // part of the user's team
   $(targetCard).addClass('selected')
+  // These functions hide and show the relevant options on the pokemon card
   $(pickButton).toggle()
   $(removeButton).toggle()
   $(useButton).toggle()
@@ -59,6 +71,7 @@ $(() => {
   setAPIOrigin(location, config)
   api.onGetAllItems()
   api.onGetAllPokemon()
+  // The addHandlers have the basic listeners needed for each view
   home.addHandlers()
   store.addHandlers()
   pokemon.addHandlers()

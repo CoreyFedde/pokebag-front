@@ -44,10 +44,16 @@ const getOnePokemonSuccess = (data) => {
   $('.pokemon-selection-board').append(itemHTML)
 }
 
+// I'm so sorry, this is the number one thing I would change
+// This function takes finds the evolution chain and then saves the name of the
+// original pokemon, the first evolution, and the second evolution
 const getPokemonEvolutionChainSuccess = (data) => {
   const original = data.chain.species.name
   const firstEvolution = data.chain.evolves_to[0].species.name
   const secondEvolution = data.chain.evolves_to[0].evolves_to[0].species.name
+  // The relevant cards are made for each of the evolutions so they can be
+  // hidden or shown
+  // The options on the card are likewise saved
   const originalCard = '.' + original + '-card'
   const originalPickButton = '.' + original + '-pick-button'
   const originalRemoveButton = '.' + original + '-remove-button'
@@ -60,10 +66,16 @@ const getPokemonEvolutionChainSuccess = (data) => {
   const secondPickButton = '.' + secondEvolution + '-pick-button'
   const secondRemoveButton = '.' + secondEvolution + '-remove-button'
   const secondUseButton = '.' + secondEvolution + '-use-button'
+  // if the originalcard has a class of "evolve", which would have been added
+  // when the rare candy was used on it, it goes to the next stage
   if ($(originalCard).hasClass('evolve') === true) {
+    // if the next stage of evolution is already in the User's team, the evolution
+    // stops
     if ($(firstEvoCard).hasClass('selected') === true) {
       $('.text-box').text('You already have the evolved form. Try another pokemon!')
     } else {
+      // If not, the evolution goes through and the original card is hidden, while the
+      // evolved pokemon card is shown and added to the User's team
       $(originalCard).toggle()
       $(originalCard).removeClass('selected')
       $(originalCard).removeClass('evolve')

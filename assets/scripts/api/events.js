@@ -40,7 +40,10 @@ const onGetOnePokemonEvolutionChain = function (data) {
     .then(ui.getPokemonEvolutionChainSuccess)
     .catch(ui.productionError)
 }
-
+// These may look confusing, but basically the first get request finds the URL
+// The onGetOnePokemonEvolutionChain follows the URL and grabs the possible
+// evolutions and checks if the User's pokemon can be evolved.
+// Better explained in the UI file
 const onGetOnePokemonEvolution = function (data) {
   api.getOnePokemonEvolution(data)
     .then((data) => {
